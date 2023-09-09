@@ -16,4 +16,9 @@ public class PlayerAnimations : MonoBehaviour
     {
         animationsScript.IdleAnimation(playerAnimator, "IsOnGround");
     }
+
+    public void WalkAnimation(bool state)
+    {
+        animationsScript.WalkAnimation(playerAnimator, "IsWalking", state);
+    }
 }

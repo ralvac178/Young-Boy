@@ -13,4 +13,9 @@ public class Animations : MonoBehaviour, IAnimations
     {
         animator.SetBool(idleState, true);
     }
+
+    public void WalkAnimation(Animator animator, string walkState, bool state)
+    {
+        animator.SetBool(walkState, state);
+    }
 }

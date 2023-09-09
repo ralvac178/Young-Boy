@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerAnimations playerAnimations;
 
     [SerializeField] private HasDamage hasDamage;
+    [SerializeField] private SpriteRenderer lookAt;
 
     public static bool isOnGround;
     // Start is called before the first frame update
@@ -53,6 +54,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        hasMove.OnHasMove(inputManager.Player.HorMove.ReadValue<float>(), true);
+        float forceMovement = inputManager.Player.HorMove.ReadValue<float>();
+        if (forceMovement != 0)
+        {
+            hasMove.OnHasMove(forceMovement, isOnGround);
+            playerAnimations.WalkAnimation(true);
+            if (forceMovement > 0)
+            {
+                lookAt.flipX = false;
+            }
+            else
+            {
+                lookAt.flipX = true;;
+            }
+        }
+        else
+        {
+            playerAnimations.WalkAnimation(false);
+        }
+        
     }
 }
