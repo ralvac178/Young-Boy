@@ -12,8 +12,8 @@ public class HasMove : MonoBehaviour
         rb2D = transform.GetComponent<Rigidbody2D>();
     }
 
-    public void OnHasMove(float dir)
+    public void OnHasMove(float dir, bool isOnFloor)
     {
-        movementScript.HorMove(rb2D, speed, dir);
+        if(isOnFloor) movementScript.HorMove(rb2D, speed, dir);
     }
 }

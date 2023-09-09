@@ -40,7 +40,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""name"": ""HorMove"",
                     ""type"": ""Value"",
                     ""id"": ""eebf5628-ebc7-4c3f-8d96-25ec48fdb7ac"",
-                    ""expectedControlType"": ""Key"",
+                    ""expectedControlType"": ""Integer"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
