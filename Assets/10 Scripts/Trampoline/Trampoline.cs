@@ -5,7 +5,14 @@ using UnityEngine;
 public class Trampoline : MonoBehaviour
 {
     public static bool isAtTop;
-    
+    public float force;
+    [SerializeField] TrampolineConfig trampolineConfig;
+
+    private void Start()
+    {
+        force = trampolineConfig.forceJump;
+    }
+
     public void EnableJumper()
     {
         isAtTop = true;

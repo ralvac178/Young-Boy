@@ -7,16 +7,16 @@ public class CollisionProvider : MonoBehaviour
     public delegate void TrapCollision();
     public static TrapCollision trapCollision;
 
-    public delegate void TrampolineCollision();
-    public static TrapCollision trampolineCollision;
+    public delegate void TrampolineCollision(float force);
+    public static TrampolineCollision trampolineCollision;
 
     public static void OnTrapCollision()
     {
         trapCollision?.Invoke();
     }
 
-    public static void OnTrampolineCollision()
+    public static void OnTrampolineCollision(float force)
     {
-        trampolineCollision?.Invoke();
+        trampolineCollision?.Invoke(force);
     }
 }

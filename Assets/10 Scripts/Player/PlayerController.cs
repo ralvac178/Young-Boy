@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private HasDamage hasDamage;
     [SerializeField] private SpriteRenderer lookAt;
+    [SerializeField] private UpForceWithTrampoline upForceWithTrampoline;
 
     public static bool isOnGround;
     // Start is called before the first frame update
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.trapCollision += hasDamage.OnHasDamage;
         CollisionProvider.trapCollision += playerAnimations.HurtAnimation;
 
+        CollisionProvider.trampolineCollision += upForceWithTrampoline.JumpTrampoline;
+
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
     }
 
@@ -45,8 +48,10 @@ public class PlayerController : MonoBehaviour
             playerAnimations.JumpAnimation();
         };
 
-        CollisionProvider.trapCollision += hasDamage.OnHasDamage;
-        CollisionProvider.trapCollision += playerAnimations.HurtAnimation;
+        CollisionProvider.trapCollision -= hasDamage.OnHasDamage;
+        CollisionProvider.trapCollision -= playerAnimations.HurtAnimation;
+
+        CollisionProvider.trampolineCollision -= upForceWithTrampoline.JumpTrampoline;
 
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
 
