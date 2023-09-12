@@ -21,4 +21,9 @@ public class PlayerAnimations : MonoBehaviour
     {
         animationsScript.WalkAnimation(playerAnimator, "IsWalking", state);
     }
+
+    public void HurtAnimation()
+    {
+        animationsScript.HurtAnimation(playerAnimator, "Hurt");
+    }
 }

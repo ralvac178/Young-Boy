@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
         };
 
         CollisionProvider.trapCollision += hasDamage.OnHasDamage;
+        CollisionProvider.trapCollision += playerAnimations.HurtAnimation;
 
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
     }
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         };
 
         CollisionProvider.trapCollision += hasDamage.OnHasDamage;
+        CollisionProvider.trapCollision += playerAnimations.HurtAnimation;
 
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
 

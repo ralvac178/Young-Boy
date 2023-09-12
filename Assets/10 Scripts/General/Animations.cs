@@ -18,4 +18,9 @@ public class Animations : MonoBehaviour, IAnimations
     {
         animator.SetBool(walkState, state);
     }
+
+    public void HurtAnimation(Animator animator, string hurtState)
+    {
+        animator.SetTrigger(hurtState);
+    }
 }

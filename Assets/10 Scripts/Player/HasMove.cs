@@ -14,6 +14,6 @@ public class HasMove : MonoBehaviour
 
     public void OnHasMove(float dir, bool isOnFloor)
     {
-        if(isOnFloor) movementScript.HorMove(rb2D, speed, dir);
+        movementScript.HorMove(rb2D, speed, dir);
     }
 }

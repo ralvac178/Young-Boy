@@ -6,10 +6,19 @@ public class HasTouchGround : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private LayerMask layerMask;
+
+    private BoxCollider2D boxCollider;
+
+    private void Start()
+    {
+        boxCollider = transform.GetComponent<BoxCollider2D>();
+    }
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, layerMask);
+        RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center, 
+            boxCollider.bounds.size, 0, Vector2.down, 0.02f,layerMask);
+
         if (hit.collider != null)
         {
             PlayerController.isOnGround = true;

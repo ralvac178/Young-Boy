@@ -11,4 +11,15 @@ public class CollisionListener : MonoBehaviour
             CollisionProvider.OnTrapCollision();
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Trampoline"))
+        {
+            if (Trampoline.isAtTop)
+            {
+                CollisionProvider.OnTrampolineCollision();
+            }            
+        }
+    }
 }
