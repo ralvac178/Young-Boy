@@ -8,11 +8,18 @@ public class CollisionListener : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Traps"))
         {
-            CollisionProvider.OnTrapCollision();
+            Collider2D collider = collision.gameObject.transform.GetComponent<Collider2D>();
+            CollisionProvider.OnTrapCollision(collider);
         }
         else if (collision.gameObject.tag.Equals("Trampoline"))
         {
             collision.gameObject.transform.GetComponent<Animator>().SetTrigger("Up");
+        }
+        else if (collision.gameObject.tag.Equals("Pusher"))
+        {
+            collision.gameObject.transform.GetComponent<Animator>().SetTrigger("Pressed");
+            collision.gameObject.layer = LayerMask.NameToLayer("Floor");
+            collision.transform.parent.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 

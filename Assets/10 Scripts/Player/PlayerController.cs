@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
         };
 
         CollisionProvider.trapCollision += hasDamage.OnHasDamage;
-        CollisionProvider.trapCollision += playerAnimations.HurtAnimation;
 
         CollisionProvider.trampolineCollision += upForceWithTrampoline.JumpTrampoline;
 
@@ -49,7 +48,6 @@ public class PlayerController : MonoBehaviour
         };
 
         CollisionProvider.trapCollision -= hasDamage.OnHasDamage;
-        CollisionProvider.trapCollision -= playerAnimations.HurtAnimation;
 
         CollisionProvider.trampolineCollision -= upForceWithTrampoline.JumpTrampoline;
 
