@@ -15,11 +15,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer lookAt;
     [SerializeField] private UpForceWithTrampoline upForceWithTrampoline;
 
+    private HasTouchGround hasTouchGroundScript;
     public static bool isOnGround;
+    [SerializeField] private float speed;
     // Start is called before the first frame update
     void Awake()
     {
         inputManager = new InputManager();
+    }
+
+    private void Start()
+    {
+        hasTouchGroundScript = transform.GetComponent<HasTouchGround>();
     }
 
     private void OnEnable()
@@ -59,10 +66,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Check if is on ground
+        isOnGround = hasTouchGroundScript.isOnGround;
+
         float forceMovement = inputManager.Player.HorMove.ReadValue<float>();
         if (forceMovement != 0)
         {
-            hasMove.OnHasMove(forceMovement, isOnGround);
+            hasMove.OnHasMove(forceMovement, isOnGround, speed);
             playerAnimations.WalkAnimation(true);
             if (forceMovement > 0)
             {

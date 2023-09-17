@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CollisionProvider : MonoBehaviour
 {
-    public delegate void TrapCollision(Collider2D collider);
+    public delegate void TrapCollision();
     public static TrapCollision trapCollision;
 
     public delegate void TrampolineCollision(float force);
     public static TrampolineCollision trampolineCollision;
 
-    public static void OnTrapCollision(Collider2D collider)
+    public static void OnTrapCollision()
     {
-        trapCollision?.Invoke(collider);
+        trapCollision?.Invoke();
     }
 
     public static void OnTrampolineCollision(float force)

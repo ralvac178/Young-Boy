@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class CollisionListener : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Traps"))
         {
-            Collider2D collider = collision.gameObject.transform.GetComponent<Collider2D>();
-            CollisionProvider.OnTrapCollision(collider);
+            CollisionProvider.OnTrapCollision();
         }
-        else if (collision.gameObject.tag.Equals("Trampoline"))
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Trampoline"))
         {
             collision.gameObject.transform.GetComponent<Animator>().SetTrigger("Up");
         }

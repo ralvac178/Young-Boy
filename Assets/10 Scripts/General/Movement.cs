@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public void HorMove(Rigidbody2D rb, float force, float dir)
+    public void HorMove(Rigidbody2D rb, float force, float dir, bool isOnGround)
     {
-        if (PlayerController.isOnGround)
+        if (isOnGround)
         {
             rb.AddForce(Vector2.right * force * dir);
         }

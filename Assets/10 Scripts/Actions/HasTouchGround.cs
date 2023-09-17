@@ -8,6 +8,7 @@ public class HasTouchGround : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
 
     private BoxCollider2D boxCollider;
+    public bool isOnGround;
 
     private void Start()
     {
@@ -21,12 +22,12 @@ public class HasTouchGround : MonoBehaviour
 
         if (hit.collider != null)
         {
-            PlayerController.isOnGround = true;
+            isOnGround = true;
             animator.SetBool("IsOnGround", true);
         }
         else
         {
-            PlayerController.isOnGround = false;
+            isOnGround = false;
             animator.SetBool("IsOnGround", false);
         }
     }
