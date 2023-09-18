@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private InputManager inputManager;
     [SerializeField] private HasMove hasMove;
     [SerializeField] private HasJump hasjump;
-    [SerializeField] private PlayerAnimations playerAnimations;
+    [SerializeField] private CharacterAnimations playerAnimations;
 
     [SerializeField] private HasDamage hasDamage;
     [SerializeField] private SpriteRenderer lookAt;

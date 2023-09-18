@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class HasDamage : MonoBehaviour
 {
-    private PlayerAnimations playerAnimationsScript;
+    private CharacterAnimations playerAnimationsScript;
 
     private SpriteRenderer sp;
     private void Start()
     {
         sp = GetComponent<SpriteRenderer>();
-        playerAnimationsScript = GetComponent<PlayerAnimations>();
+        playerAnimationsScript = GetComponent<CharacterAnimations>();
     }
 
     public void OnHasDamage()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectEdges : MonoBehaviour
+public class HasDetectEdges : MonoBehaviour
 {
     public bool isOnRightEdge; 
     public bool isOnLeftEdge;

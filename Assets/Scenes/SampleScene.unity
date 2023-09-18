@@ -31956,7 +31956,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238007363}
-  m_LocalRotation: {x: -3e-45, y: 1e-45, z: 0, w: 1}
+  m_LocalRotation: {x: 1e-45, y: 1e-45, z: -0, w: 1}
   m_LocalPosition: {x: -1.21, y: -0.624, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31982,6 +31982,10 @@ GameObject:
   - component: {fileID: 303661060}
   - component: {fileID: 303661064}
   - component: {fileID: 303661065}
+  - component: {fileID: 303661066}
+  - component: {fileID: 303661067}
+  - component: {fileID: 303661069}
+  - component: {fileID: 303661068}
   m_Layer: 0
   m_Name: Shaman
   m_TagString: Untagged
@@ -32163,6 +32167,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyConfig: {fileID: 11400000, guid: bda307839c393b0409fed18fd885e43e, type: 2}
   hasMoveScript: {fileID: 303661061}
+  speed: 0
+  enableMovement: 1
+  direction: {x: 1, y: 0}
 --- !u!114 &303661065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32180,6 +32187,66 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   isOnGround: 0
+--- !u!114 &303661066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303661056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622dddc8039353d4581ae035d0221de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyConfig: {fileID: 11400000, guid: bda307839c393b0409fed18fd885e43e, type: 2}
+  hasMoveScript: {fileID: 303661061}
+  speed: 0
+  enableMovement: 1
+  direction: {x: 1, y: 0}
+--- !u!114 &303661067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303661056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edeaa6b618a25814990feefae381db4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOnRightEdge: 0
+  isOnLeftEdge: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &303661068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303661056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a779d2d6a3ffd4e498c940053fda43b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &303661069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303661056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da530182c45a6274fb2dfab2c76a62bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationsScript: {fileID: 303661068}
+  animator: {fileID: 303661057}
 --- !u!1 &414663730
 GameObject:
   m_ObjectHideFlags: 0
@@ -32992,7 +33059,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: -3e-45, y: 1e-45, z: 0, w: 1}
+  m_LocalRotation: {x: 1e-45, y: 1e-45, z: 0, w: 1}
   m_LocalPosition: {x: -1.21, y: -0.624, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33469,7 +33536,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1247223939}
   - component: {fileID: 1247223938}
-  - component: {fileID: 1247223949}
   - component: {fileID: 1247223948}
   - component: {fileID: 1247223942}
   - component: {fileID: 1247223941}
@@ -33483,7 +33549,7 @@ GameObject:
   - component: {fileID: 1247223952}
   - component: {fileID: 1247223953}
   - component: {fileID: 1247223954}
-  - component: {fileID: 1247223955}
+  - component: {fileID: 1247223956}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -33626,7 +33692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasMove: {fileID: 1247223945}
   hasjump: {fileID: 1247223946}
-  playerAnimations: {fileID: 1247223949}
+  playerAnimations: {fileID: 1247223956}
   hasDamage: {fileID: 1247223950}
   lookAt: {fileID: 1247223941}
   upForceWithTrampoline: {fileID: 1247223954}
@@ -33682,20 +33748,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a779d2d6a3ffd4e498c940053fda43b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1247223949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247223937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95d8d7a003d926447b0d6914a3612579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationsScript: {fileID: 1247223948}
-  playerAnimator: {fileID: 1247223942}
 --- !u!114 &1247223950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33775,7 +33827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0738a5afcc4ebe40b6fab0c4d916064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1247223955
+--- !u!114 &1247223956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33784,14 +33836,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1247223937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edeaa6b618a25814990feefae381db4e, type: 3}
+  m_Script: {fileID: 11500000, guid: da530182c45a6274fb2dfab2c76a62bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOnRightEdge: 0
-  isOnLeftEdge: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 8
+  animationsScript: {fileID: 1247223948}
+  animator: {fileID: 1247223942}
 --- !u!1 &1273997362
 GameObject:
   m_ObjectHideFlags: 0
@@ -34816,7 +34865,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 196534167, guid: a204f42834069b740910ba8568c8e051, type: 3}
       - {fileID: 736413526, guid: a204f42834069b740910ba8568c8e051, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -25, y: 26, z: 0}
@@ -34960,7 +35009,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 196534167, guid: a204f42834069b740910ba8568c8e051, type: 3}
       - {fileID: 736413526, guid: a204f42834069b740910ba8568c8e051, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 2, y: 33, z: 0}
