@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d6b00a5e1a7b575488471ee10d20ac93
+guid: 90b6f9e4db5dcd74c998b5da428ef115
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -117,169 +117,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walk_0
+      name: Arrow_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 0
-        width: 64
-        height: 73
-      alignment: 9
-      pivot: {x: 0.6, y: 0.5}
+        x: 1
+        y: 5
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b29da854eb396574fbd29270a58f7e48
-      internalID: 2040614176
+      spriteID: 70a4d8109d455e347afdd2fe730de4a1
+      internalID: 2133256494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_1
+      name: Arrow_1
       rect:
         serializedVersion: 2
-        x: 158
-        y: 0
-        width: 64
-        height: 73
-      alignment: 9
-      pivot: {x: 0.6, y: 0.5}
+        x: 17
+        y: 6
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3541519b9975894fb32955a8c979fd3
-      internalID: -1470559668
+      spriteID: fba41b51631b1044eb0e18896d4b099b
+      internalID: 1754424869
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_2
+      name: Arrow_2
       rect:
         serializedVersion: 2
-        x: 287
-        y: 0
-        width: 64
-        height: 75
-      alignment: 9
-      pivot: {x: 0.6, y: 0.5}
+        x: 33
+        y: 2
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f254e535d6944046adb1e5fbbe8c914
-      internalID: 561942666
+      spriteID: f91e1dfccf8726144870f8b7ae27263c
+      internalID: 585362449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_3
+      name: Arrow_3
       rect:
         serializedVersion: 2
-        x: 417
-        y: 0
-        width: 64
-        height: 74
-      alignment: 9
-      pivot: {x: 0.6, y: 0.5}
+        x: 49
+        y: 9
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c16cc3fd4af77b419fe607fca89ba0e
-      internalID: 1629612401
+      spriteID: ff54b9694ea31a142b7b04fa3f8d8fd9
+      internalID: -1486333770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_4
+      name: Arrow_4
       rect:
         serializedVersion: 2
-        x: 552
-        y: 0
-        width: 64
-        height: 73
-      alignment: 9
-      pivot: {x: 0.6, y: 0.5}
+        x: 65
+        y: 9
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f204e004689aa64ab19cbc9f6b2144f
-      internalID: -2002739821
+      spriteID: 46e7b21de38161c41a3172a992fa8f66
+      internalID: -1438846194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_5
+      name: Arrow_5
       rect:
         serializedVersion: 2
-        x: 682
-        y: 0
-        width: 65
-        height: 74
-      alignment: 9
-      pivot: {x: 0.6, y: 0.5}
+        x: 81
+        y: 8
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 316e5adaa096a6f43ade55354b7d6d28
-      internalID: 1583811718
+      spriteID: 38f756b0b7f0abd41853c7a8a7e201c3
+      internalID: 559367603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk_6
+      name: Arrow_6
       rect:
         serializedVersion: 2
-        x: 809
-        y: 0
-        width: 64
-        height: 75
-      alignment: 9
-      pivot: {x: 0.6, y: 0.5}
+        x: 53
+        y: 2
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f48f5d423f2d46448af2ece28ee8182c
-      internalID: -950668848
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk_7
-      rect:
-        serializedVersion: 2
-        x: 929
-        y: 0
-        width: 64
-        height: 74
-      alignment: 9
-      pivot: {x: 0.6, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99f5e5e00fba7c64c9cbd0fb2669e002
-      internalID: -574336341
+      spriteID: d4ff06d80a1debc43a72cbcb275f5d0c
+      internalID: -722990484
       vertices: []
       indices: 
       edges: []
@@ -295,14 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Walk_0: 2040614176
-      Walk_1: -1470559668
-      Walk_2: 561942666
-      Walk_3: 1629612401
-      Walk_4: -2002739821
-      Walk_5: 1583811718
-      Walk_6: -950668848
-      Walk_7: -574336341
+      Arrow_0: 2133256494
+      Arrow_1: 1754424869
+      Arrow_2: 585362449
+      Arrow_3: -1486333770
+      Arrow_4: -1438846194
+      Arrow_5: 559367603
+      Arrow_6: -722990484
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

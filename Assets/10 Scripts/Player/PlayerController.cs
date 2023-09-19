@@ -16,8 +16,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UpForceWithTrampoline upForceWithTrampoline;
 
     private HasTouchGround hasTouchGroundScript;
+    private CapsuleCollider2D capsuleCollider2D;
     public static bool isOnGround;
     [SerializeField] private float speed;
+    private float forceMovement;
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         hasTouchGroundScript = transform.GetComponent<HasTouchGround>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
 
     private void OnEnable()
@@ -64,12 +67,16 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+
+    private void Update()
     {
-        //Check if is on ground
         isOnGround = hasTouchGroundScript.isOnGround;
 
-        float forceMovement = inputManager.Player.HorMove.ReadValue<float>();
+        forceMovement = inputManager.Player.HorMove.ReadValue<float>();
+    }
+    void FixedUpdate()
+    {
+        //Check if is on ground   
         if (forceMovement != 0)
         {
             hasMove.OnHasMove(forceMovement, isOnGround, speed);
@@ -80,7 +87,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                lookAt.flipX = true;;
+                lookAt.flipX = true;
             }
         }
         else
