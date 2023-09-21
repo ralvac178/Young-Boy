@@ -23,4 +23,9 @@ public class Animations : MonoBehaviour, IAnimations
     {
         animator.SetTrigger(hurtState);
     }
+
+    public void ShootAnimation(Animator animator, string shootState)
+    {
+        animator.SetTrigger(shootState);
+    }
 }

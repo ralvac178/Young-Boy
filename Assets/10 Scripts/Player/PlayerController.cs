@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     public static bool isOnGround;
     [SerializeField] private float speed;
     private float forceMovement;
+
+    [HideInInspector] public static bool playerLookAt = true;
     // Start is called before the first frame update
     void Awake()
     {
@@ -42,6 +44,8 @@ public class PlayerController : MonoBehaviour
             playerAnimations.JumpAnimation();
         };
 
+        inputManager.Player.Shoot.performed += _ => playerAnimations.ShootAnimation();
+
         CollisionProvider.trapCollision += hasDamage.OnHasDamage;
         CollisionProvider.coinCollision += hasGetCoin.AddPoints;
         CollisionProvider.trampolineCollision += upForceWithTrampoline.JumpTrampoline;
@@ -57,6 +61,7 @@ public class PlayerController : MonoBehaviour
             playerAnimations.JumpAnimation();
         };
 
+        inputManager.Player.Shoot.performed -= _ => playerAnimations.ShootAnimation();
         CollisionProvider.trapCollision -= hasDamage.OnHasDamage;
         CollisionProvider.coinCollision -= hasGetCoin.AddPoints;
         CollisionProvider.trampolineCollision -= upForceWithTrampoline.JumpTrampoline;
@@ -84,10 +89,12 @@ public class PlayerController : MonoBehaviour
             if (forceMovement > 0)
             {
                 lookAt.flipX = false;
+                playerLookAt = true;
             }
             else
             {
                 lookAt.flipX = true;
+                playerLookAt = false;
             }
         }
         else

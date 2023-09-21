@@ -44,6 +44,15 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""355e436d-f265-4722-9897-807817b00411"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -90,6 +99,17 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""action"": ""HorMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06eeaca1-c0c6-44b3-9848-f78f08b14eac"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Key"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -112,6 +132,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_HorMove = m_Player.FindAction("HorMove", throwIfNotFound: true);
+        m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -175,12 +196,14 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_HorMove;
+    private readonly InputAction m_Player_Shoot;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
         public PlayerActions(@InputManager wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @HorMove => m_Wrapper.m_Player_HorMove;
+        public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -196,6 +219,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
             @HorMove.started += instance.OnHorMove;
             @HorMove.performed += instance.OnHorMove;
             @HorMove.canceled += instance.OnHorMove;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -206,6 +232,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
             @HorMove.started -= instance.OnHorMove;
             @HorMove.performed -= instance.OnHorMove;
             @HorMove.canceled -= instance.OnHorMove;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -236,5 +265,6 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnHorMove(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }
