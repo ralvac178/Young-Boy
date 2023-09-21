@@ -11,6 +11,11 @@ public class CollisionListener : MonoBehaviour
         {
             CollisionProvider.OnTrapCollision();
         }
+        else if (collision.gameObject.tag.Equals("Coin"))
+        {
+            CollisionProvider.OnCoinCollision(1);
+            collision.gameObject.SetActive(false);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

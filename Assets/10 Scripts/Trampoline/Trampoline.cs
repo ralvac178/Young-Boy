@@ -5,7 +5,7 @@ using UnityEngine;
 public class Trampoline : MonoBehaviour
 {
     public static bool isAtTop;
-    public float force;
+    [HideInInspector] public float force;
     [SerializeField] TrampolineConfig trampolineConfig;
 
     private void Start()

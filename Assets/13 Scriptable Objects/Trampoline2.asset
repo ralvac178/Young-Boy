@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a65e27aad854524d9278b7b050409d7, type: 3}
   m_Name: Trampoline2
   m_EditorClassIdentifier: 
-  forceJump: 240
+  forceJump: 235

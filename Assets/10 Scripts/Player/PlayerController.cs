@@ -12,11 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterAnimations playerAnimations;
 
     [SerializeField] private HasDamage hasDamage;
+    [SerializeField] private HasGetCoin hasGetCoin;
     [SerializeField] private SpriteRenderer lookAt;
     [SerializeField] private UpForceWithTrampoline upForceWithTrampoline;
 
     private HasTouchGround hasTouchGroundScript;
-    private CapsuleCollider2D capsuleCollider2D;
     public static bool isOnGround;
     [SerializeField] private float speed;
     private float forceMovement;
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         hasTouchGroundScript = transform.GetComponent<HasTouchGround>();
-        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        //hasGetCoin = GetComponent<HasGetCoin>();
     }
 
     private void OnEnable()
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         };
 
         CollisionProvider.trapCollision += hasDamage.OnHasDamage;
-
+        CollisionProvider.coinCollision += hasGetCoin.AddPoints;
         CollisionProvider.trampolineCollision += upForceWithTrampoline.JumpTrampoline;
 
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         };
 
         CollisionProvider.trapCollision -= hasDamage.OnHasDamage;
-
+        CollisionProvider.coinCollision -= hasGetCoin.AddPoints;
         CollisionProvider.trampolineCollision -= upForceWithTrampoline.JumpTrampoline;
 
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
