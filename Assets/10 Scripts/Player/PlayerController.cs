@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     private float forceMovement;
 
     [HideInInspector] public static bool playerLookAt = true;
+
+    [SerializeField] private Parallax[] parallax;
+    private Rigidbody2D rigidbody;
     // Start is called before the first frame update
     void Awake()
     {
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         hasTouchGroundScript = transform.GetComponent<HasTouchGround>();
+        rigidbody = GetComponent<Rigidbody2D>();
         //hasGetCoin = GetComponent<HasGetCoin>();
     }
 
@@ -88,11 +92,28 @@ public class PlayerController : MonoBehaviour
             playerAnimations.WalkAnimation(true);
             if (forceMovement > 0)
             {
+                if (rigidbody.velocity.magnitude > 0.5f)
+                {
+                    for (int i = 0; i < parallax.Length; i++)
+                    {
+                        parallax[i].MoveBackgroundRight();
+                    }
+                }              
+                
                 lookAt.flipX = false;
                 playerLookAt = true;
             }
             else
             {
+                if (rigidbody.velocity.magnitude < -0.5f)
+                {
+                    for (int i = 0; i < parallax.Length; i++)
+                    {
+                        parallax[i].MoveBackgroundLeft();
+                    }
+                }
+                
+                
                 lookAt.flipX = true;
                 playerLookAt = false;
             }
