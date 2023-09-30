@@ -8,7 +8,10 @@ public class Jump : MonoBehaviour
     {
         if (PlayerController.isOnGround)
         {
-            rb2D.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
+            if (rb2D.velocity.y < 0.5f)
+            {
+                rb2D.AddForce(Vector2.up * forceJump, ForceMode2D.Impulse);
+            }          
         }
     }
 }

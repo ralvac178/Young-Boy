@@ -27,4 +27,18 @@ public class FallBlocks : MonoBehaviour
             }
         }     
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Arrow"))
+        {
+            foreach (var animator in animatorArray)
+            {
+                animator.SetTrigger("Breaking");
+            }
+
+            Destroy(collision.gameObject);
+        }
+    }
 }
