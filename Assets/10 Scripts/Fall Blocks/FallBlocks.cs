@@ -14,6 +14,7 @@ public class FallBlocks : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        if (!transform.gameObject.name.Contains("Fall")) return;
         if (collision.gameObject.CompareTag("Player"))
         {
             timer += Time.deltaTime;

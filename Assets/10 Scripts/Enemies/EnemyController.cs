@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour
     public Vector2 direction = Vector2.right;
 
     private CharacterAnimations characterAnimations;
+
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class EnemyController : MonoBehaviour
         hasTouchGroundScript = GetComponent<HasTouchGround>();
         hasDetectEdgesScript = GetComponent<HasDetectEdges>();
         characterAnimations = GetComponent<CharacterAnimations>();
+        rb = GetComponent<Rigidbody2D>();
         StartCoroutine(nameof(LookAt));
     }
 
@@ -46,7 +49,7 @@ public class EnemyController : MonoBehaviour
                 speed = 0;
                 characterAnimations.WalkAnimation(false);
                 yield return new WaitForSeconds(3f);
-                speed = enemyConfig.speed;
+                speed = enemyConfig.speed;             
                 characterAnimations.WalkAnimation(true);
                 yield return new WaitForSeconds(1.5f);
             }
@@ -62,6 +65,14 @@ public class EnemyController : MonoBehaviour
                 yield return new WaitForSeconds(1.5f);
             }
             yield return null;
+            if (rb.velocity.x > 1f || rb.velocity.x < -1)
+            {
+                speed = enemyConfig.speed / 1.5f;
+            }
+            else
+            {
+                speed = enemyConfig.speed;
+            }
         }      
     }
 

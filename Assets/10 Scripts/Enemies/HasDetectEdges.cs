@@ -7,16 +7,16 @@ public class HasDetectEdges : MonoBehaviour
     public bool isOnRightEdge; 
     public bool isOnLeftEdge;
 
-    private BoxCollider2D boxCollider;
+    private CapsuleCollider2D capsuleCollider2D;
     private Vector2 centerRight, size, normalSize, centerLeft;
     [SerializeField] private LayerMask layerMask;
 
     private float xDistance, yDistance;
     private void Start()
     {
-        boxCollider = transform.GetComponent<BoxCollider2D>();
+        capsuleCollider2D = transform.GetComponent<CapsuleCollider2D>();
 
-        normalSize = boxCollider.bounds.size;
+        normalSize = capsuleCollider2D.bounds.size;
         size = normalSize / 3;
         //Get distance to use in boxcast
         //On x
@@ -30,18 +30,17 @@ public class HasDetectEdges : MonoBehaviour
     void Update()
     {
         
-        centerRight = boxCollider.bounds.center + new Vector3(xDistance, -yDistance, 0);
+        centerRight = capsuleCollider2D.bounds.center + new Vector3(xDistance, -yDistance, 0);
 
-        centerLeft = boxCollider.bounds.center - new Vector3(xDistance, yDistance, 0);
+        centerLeft = capsuleCollider2D.bounds.center - new Vector3(xDistance, yDistance, 0);
 
         //Edges
         RaycastHit2D hitRight = Physics2D.BoxCast(centerRight, size, 0, Vector2.down, 0.02f, layerMask);
         RaycastHit2D hitLeft= Physics2D.BoxCast(centerLeft, size, 0, Vector2.down, 0.02f, layerMask);
 
         //Walls
-        RaycastHit2D hitRightWall = Physics2D.BoxCast(boxCollider.bounds.center, normalSize, 0, Vector2.right, 0.5f, layerMask);
-        RaycastHit2D hitLeftWall = Physics2D.BoxCast(boxCollider.bounds.center, normalSize, 0, Vector2.left, 0.5f, layerMask);
-
+        RaycastHit2D hitRightWall = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, normalSize, CapsuleDirection2D.Horizontal, 0, Vector2.right,0.4f, layerMask);
+        RaycastHit2D hitLeftWall = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, normalSize, CapsuleDirection2D.Horizontal, 0, Vector2.left, 0.4f, layerMask);
         bool isOnleftSide = hitLeft.collider == null || hitLeftWall.collider != null;
         bool isOnRightSide = hitRight.collider == null || hitRightWall.collider != null;
 
