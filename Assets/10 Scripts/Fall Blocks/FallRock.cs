@@ -22,10 +22,10 @@ public class FallRock : MonoBehaviour
     public void HideBlock()
     {
         GetComponent<SpriteRenderer>().enabled = false;
-        if (!transform.parent.name.Contains("BrokenBricks"))
+        if (transform.gameObject.name.Contains("Falling"))
         {
             Invoke(nameof(EnableRock), 10f);
-        }        
+        }
     }
 
     public void EnableRock()

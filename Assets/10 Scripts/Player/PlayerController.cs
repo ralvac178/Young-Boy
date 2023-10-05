@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public static bool playerLookAt = true;
 
     [SerializeField] private Parallax[] parallax;
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         hasTouchGroundScript = transform.GetComponent<HasTouchGround>();
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         //hasGetCoin = GetComponent<HasGetCoin>();
     }
 
@@ -48,11 +48,23 @@ public class PlayerController : MonoBehaviour
             playerAnimations.JumpAnimation();
         };
 
-        inputManager.Player.Shoot.performed += _ => playerAnimations.ShootAnimation();
+        inputManager.Player.Shoot.performed += _ =>
+        {
+            if (GameManager.instance.arrows > 0)
+            {
+                playerAnimations.ShootAnimation();
+                GameManager.instance.SubArrows();
+            }
+            else
+            {
+                playerAnimations.PunchAnimation();
+            }
+        };
 
         CollisionProvider.trapCollision += hasDamage.OnHasDamage;
         CollisionProvider.coinCollision += hasGetCoin.AddPoints;
         CollisionProvider.trampolineCollision += upForceWithTrampoline.JumpTrampoline;
+        CollisionProvider.arrowsCollision += GameManager.instance.AddArrows;
 
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
     }
@@ -65,11 +77,22 @@ public class PlayerController : MonoBehaviour
             playerAnimations.JumpAnimation();
         };
 
-        inputManager.Player.Shoot.performed -= _ => playerAnimations.ShootAnimation();
+        inputManager.Player.Shoot.performed -= _ =>
+        {
+            if (GameManager.instance.arrows > 0)
+            {
+                playerAnimations.ShootAnimation();
+                GameManager.instance.SubArrows();
+            }
+            else
+            {
+                playerAnimations.PunchAnimation();
+            }
+        };
         CollisionProvider.trapCollision -= hasDamage.OnHasDamage;
         CollisionProvider.coinCollision -= hasGetCoin.AddPoints;
         CollisionProvider.trampolineCollision -= upForceWithTrampoline.JumpTrampoline;
-
+        CollisionProvider.arrowsCollision -= GameManager.instance.AddArrows;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
 
         inputManager.Disable();
@@ -92,7 +115,7 @@ public class PlayerController : MonoBehaviour
             playerAnimations.WalkAnimation(true);
             if (forceMovement > 0)
             {
-                if (rigidbody.velocity.magnitude > 0.5f)
+                if (rb.velocity.magnitude > 0.5f)
                 {
                     for (int i = 0; i < parallax.Length; i++)
                     {
@@ -105,7 +128,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (rigidbody.velocity.magnitude < -0.5f)
+                if (rb.velocity.magnitude < -0.5f)
                 {
                     for (int i = 0; i < parallax.Length; i++)
                     {

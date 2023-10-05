@@ -28,4 +28,9 @@ public class Animations : MonoBehaviour, IAnimations
     {
         animator.SetTrigger(shootState);
     }
+
+    public void PunchAnimation(Animator animator, string punchState)
+    {
+        animator.SetTrigger(punchState);
+    }
 }

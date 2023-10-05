@@ -16,6 +16,11 @@ public class CollisionListener : MonoBehaviour
             CollisionProvider.OnCoinCollision(1);
             collision.gameObject.SetActive(false);
         }
+        else if (collision.gameObject.tag.Equals("CollectableArrows"))
+        {
+            CollisionProvider.OnArrowsCollision();
+            collision.gameObject.SetActive(false);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

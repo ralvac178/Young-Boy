@@ -10,6 +10,9 @@ public class CollisionProvider : MonoBehaviour
     public delegate void CoinCollision(int points);
     public static CoinCollision coinCollision;
 
+    public delegate void ArrowsCollision();
+    public static ArrowsCollision arrowsCollision;
+
     public delegate void TrampolineCollision(float force);
     public static TrampolineCollision trampolineCollision;
 
@@ -26,5 +29,10 @@ public class CollisionProvider : MonoBehaviour
     public static void OnCoinCollision(int points)
     {
         coinCollision?.Invoke(points);
+    }
+
+    public static void OnArrowsCollision()
+    {
+        arrowsCollision?.Invoke();
     }
 }

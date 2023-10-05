@@ -31,4 +31,9 @@ public class CharacterAnimations : MonoBehaviour
     {
         animationsScript.ShootAnimation(animator, "Shoot");
     }
+
+    public void PunchAnimation()
+    {
+        animationsScript.PunchAnimation(animator, "Punch");
+    }
 }
