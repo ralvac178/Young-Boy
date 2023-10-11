@@ -21,7 +21,15 @@ public class HasDamage : MonoBehaviour
 
     public void TurnToRed()
     {
-        sp.color = Color.red;
+        if (transform.gameObject.CompareTag("Player"))
+        {
+            sp.color = Color.red;
+        }
+        else
+        {
+            sp.color = Color.yellow;
+        }
+        
         Invoke(nameof(TurnToWhite), 2f);
     }
 

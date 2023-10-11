@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EnemyConfigLongWay
   m_EditorClassIdentifier: 
   type: 
-  force: 0
-  lives: 0
-  speed: 0
+  force: 200
+  lives: 15
+  speed: 200

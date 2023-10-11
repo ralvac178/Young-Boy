@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Parallax[] parallax;
     private Rigidbody2D rb;
+
+    public static bool isPunching;
     // Start is called before the first frame update
     void Awake()
     {
@@ -86,7 +88,11 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                playerAnimations.PunchAnimation();
+                if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("PlayerHurt")
+                && !(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
+                {
+                    playerAnimations.PunchAnimation();
+                }              
             }
         };
         CollisionProvider.trapCollision -= hasDamage.OnHasDamage;

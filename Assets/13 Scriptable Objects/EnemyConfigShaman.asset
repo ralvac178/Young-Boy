@@ -15,4 +15,4 @@ MonoBehaviour:
   type: Shaman
   force: 150
   lives: 5
-  speed: 170
+  speed: 185

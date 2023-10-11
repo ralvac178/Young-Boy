@@ -34,6 +34,13 @@ public class CollisionListener : MonoBehaviour
             collision.gameObject.layer = LayerMask.NameToLayer("Floor");
             collision.transform.parent.GetComponent<BoxCollider2D>().enabled = false;
         }
+        else if (collision.gameObject.tag.Equals("Enemy"))
+        {
+            if (PlayerController.isPunching)
+            {
+                collision.gameObject.transform.GetComponent<HasDamage>().OnHasDamage();
+            }
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)

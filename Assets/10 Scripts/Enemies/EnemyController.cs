@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
 
     private HasTouchGround hasTouchGroundScript;
     private HasDetectEdges hasDetectEdgesScript;
+    private HasDetectPlayer hasDetectPlayerScript;
     private SpriteRenderer sr;
 
     public bool enableMovement = true;
@@ -26,11 +27,21 @@ public class EnemyController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         hasTouchGroundScript = GetComponent<HasTouchGround>();
         hasDetectEdgesScript = GetComponent<HasDetectEdges>();
+        hasDetectPlayerScript = GetComponent<HasDetectPlayer>();
         characterAnimations = GetComponent<CharacterAnimations>();
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(nameof(LookAt));
     }
 
+    private void Update()
+    {
+        if ((hasDetectPlayerScript.playerOnLeft || hasDetectPlayerScript.playerOnRight)
+            && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Enemy_hurt") &&
+            !(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
+        {
+            characterAnimations.PunchAnimation();
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -64,6 +75,15 @@ public class EnemyController : MonoBehaviour
                 characterAnimations.WalkAnimation(true);
                 yield return new WaitForSeconds(1.5f);
             }
+            else if (hasDetectPlayerScript.playerOnLeft || hasDetectPlayerScript.playerOnRight)
+            {
+                speed = 0;
+                characterAnimations.WalkAnimation(false);               
+            }
+            else
+            {
+                characterAnimations.WalkAnimation(true);
+            }
             yield return null;
             if (rb.velocity.x > 1f || rb.velocity.x < -1)
             {
@@ -79,5 +99,23 @@ public class EnemyController : MonoBehaviour
     private void OnDisable()
     {
         StopCoroutine(nameof(LookAt));
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.tag.Equals("Player")) return;
+
+            if (hasDetectPlayerScript.playerOnLeft)
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 50, ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<HasDamage>().OnHasDamage();
+            }
+            else if (hasDetectPlayerScript.playerOnRight)
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 50, ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<HasDamage>().OnHasDamage();
+            }
+
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 30, ForceMode2D.Impulse);
     }
 }
