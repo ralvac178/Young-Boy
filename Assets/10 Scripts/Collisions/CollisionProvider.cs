@@ -7,6 +7,9 @@ public class CollisionProvider : MonoBehaviour
     public delegate void TrapCollision();
     public static TrapCollision trapCollision;
 
+    public delegate void LavapCollision();
+    public static LavapCollision lavaCollision;
+
     public delegate void CoinCollision(int points);
     public static CoinCollision coinCollision;
 
@@ -34,5 +37,10 @@ public class CollisionProvider : MonoBehaviour
     public static void OnArrowsCollision()
     {
         arrowsCollision?.Invoke();
+    }
+
+    public static void OnLavaCollision()
+    {
+        lavaCollision?.Invoke();
     }
 }

@@ -7,9 +7,11 @@ public class HasDamage : MonoBehaviour
     private CharacterAnimations playerAnimationsScript;
 
     private SpriteRenderer sp;
+    private Rigidbody2D rb2D;
     private void Start()
     {
         sp = GetComponent<SpriteRenderer>();
+        rb2D = GetComponent<Rigidbody2D>();
         playerAnimationsScript = GetComponent<CharacterAnimations>();
     }
 

@@ -41,6 +41,10 @@ public class CollisionListener : MonoBehaviour
                 collision.gameObject.transform.GetComponent<HasDamage>().OnHasDamage();
             }
         }
+        else if (collision.gameObject.tag.Equals("Traps"))
+        {
+            CollisionProvider.OnLavaCollision();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)

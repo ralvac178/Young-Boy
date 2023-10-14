@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,8 +68,15 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.coinCollision += hasGetCoin.AddPoints;
         CollisionProvider.trampolineCollision += upForceWithTrampoline.JumpTrampoline;
         CollisionProvider.arrowsCollision += GameManager.instance.AddArrows;
-
+        CollisionProvider.lavaCollision += OnhasHurtJump;
+        CollisionProvider.lavaCollision += hasDamage.OnHasDamage;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
+    }
+
+    private void OnhasHurtJump()
+    {
+        if (rb.velocity.y > 0.5f) return;
+        rb.AddForce(Vector2.up * 185, ForceMode2D.Impulse);
     }
 
     private void OnDisable()
@@ -99,6 +107,8 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.coinCollision -= hasGetCoin.AddPoints;
         CollisionProvider.trampolineCollision -= upForceWithTrampoline.JumpTrampoline;
         CollisionProvider.arrowsCollision -= GameManager.instance.AddArrows;
+        CollisionProvider.lavaCollision -= OnhasHurtJump;
+        CollisionProvider.lavaCollision -= hasDamage.OnHasDamage;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
 
         inputManager.Disable();
