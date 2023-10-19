@@ -17,7 +17,7 @@ public class Fireball : MonoBehaviour
         capCollider = GetComponent<CapsuleCollider2D>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         animator.SetFloat("Force", rb2D.velocity.y);
     }

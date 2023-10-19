@@ -7,6 +7,9 @@ public class CollisionProvider : MonoBehaviour
     public delegate void TrapCollision();
     public static TrapCollision trapCollision;
 
+    public delegate void KeyCollision();
+    public static KeyCollision keyCollision;
+
     public delegate void LavapCollision();
     public static LavapCollision lavaCollision;
 
@@ -42,5 +45,10 @@ public class CollisionProvider : MonoBehaviour
     public static void OnLavaCollision()
     {
         lavaCollision?.Invoke();
+    }
+
+    public static void OnKeyCollision()
+    {
+        keyCollision?.Invoke();
     }
 }

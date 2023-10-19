@@ -21,6 +21,11 @@ public class CollisionListener : MonoBehaviour
             CollisionProvider.OnArrowsCollision();
             collision.gameObject.SetActive(false);
         }
+        else if (collision.gameObject.tag.Equals("Key"))
+        {
+            CollisionProvider.OnKeyCollision();
+            collision.gameObject.SetActive(false);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
