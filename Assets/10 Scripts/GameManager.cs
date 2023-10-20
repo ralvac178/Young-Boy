@@ -6,7 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public static int points;
     public int arrows;
+    public int keys;
     public static GameManager instance;
+
 
     // Start is called before the first frame update
     void Awake()
