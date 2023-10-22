@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OpenCasttleDoor : MonoBehaviour
 {
@@ -15,9 +16,11 @@ public class OpenCasttleDoor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (GameManager.instance.keys >= 3)
+            if (GameManager.instance.keys >= 0)
             {
                 animator.SetTrigger("OpenDoor");
+                GameManager.instance.keys = 0;
+                SceneManager.LoadScene("Stage2", LoadSceneMode.Single);
             }
             else
             {

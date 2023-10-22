@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
-        
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Update is called once per frame
@@ -38,6 +39,5 @@ public class GameManager : MonoBehaviour
     public void SubArrows()
     {
         arrows--;
-        Debug.Log(arrows);
     }
 }

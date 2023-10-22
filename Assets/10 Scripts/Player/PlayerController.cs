@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,6 +33,15 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         inputManager = new InputManager();
+
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Player");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -70,6 +80,7 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.arrowsCollision += GameManager.instance.AddArrows;
         CollisionProvider.lavaCollision += OnhasHurtJump;
         CollisionProvider.lavaCollision += hasDamage.OnHasDamage;
+        SceneManager.sceneLoaded += GetComponent<InitPosPlayer>().NewPosPlayer;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
     }
 
@@ -109,6 +120,7 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.arrowsCollision -= GameManager.instance.AddArrows;
         CollisionProvider.lavaCollision -= OnhasHurtJump;
         CollisionProvider.lavaCollision -= hasDamage.OnHasDamage;
+        SceneManager.sceneLoaded -= GetComponent<InitPosPlayer>().NewPosPlayer;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
 
         inputManager.Disable();
@@ -135,7 +147,10 @@ public class PlayerController : MonoBehaviour
                 {
                     for (int i = 0; i < parallax.Length; i++)
                     {
-                        parallax[i].MoveBackgroundRight();
+                        if (parallax[i] != null)
+                        {
+                            parallax[i].MoveBackgroundRight();
+                        }
                     }
                 }              
                 
