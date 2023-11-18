@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
 
     private HasTouchGround hasTouchGroundScript;
     private HasDetectEdges hasDetectEdgesScript;
-    private HasDetectPlayer hasDetectPlayerScript;
+    private HasDetectObstacle hasDetectObstaclesScript;
     private SpriteRenderer sr;
 
     public bool enableMovement = true;
@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         hasTouchGroundScript = GetComponent<HasTouchGround>();
         hasDetectEdgesScript = GetComponent<HasDetectEdges>();
-        hasDetectPlayerScript = GetComponent<HasDetectPlayer>();
+        hasDetectObstaclesScript = GetComponent<HasDetectObstacle>();
         characterAnimations = GetComponent<CharacterAnimations>();
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(nameof(LookAt));
@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if ((hasDetectPlayerScript.playerOnLeft || hasDetectPlayerScript.playerOnRight)
+        if ((hasDetectObstaclesScript.playerOnLeft || hasDetectObstaclesScript.playerOnRight)
             && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Enemy_hurt") &&
             !(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
         {
@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour
         characterAnimations.WalkAnimation(true);
         while (true)
         {
-            if (hasDetectEdgesScript.isOnLeftEdge)
+            if (hasDetectEdgesScript.isOnLeftEdge || hasDetectObstaclesScript.wallOnLeft)
             {
                 direction = Vector2.right;
                 sr.flipX = false;
@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
                 characterAnimations.WalkAnimation(true);
                 yield return new WaitForSeconds(1.5f);
             }
-            else if (hasDetectEdgesScript.isOnRightEdge)
+            else if (hasDetectEdgesScript.isOnRightEdge || hasDetectObstaclesScript.wallOnRight)
             {
                 direction = Vector2.left;
                 sr.flipX = true;
@@ -75,7 +75,7 @@ public class EnemyController : MonoBehaviour
                 characterAnimations.WalkAnimation(true);
                 yield return new WaitForSeconds(1.5f);
             }
-            else if (hasDetectPlayerScript.playerOnLeft || hasDetectPlayerScript.playerOnRight)
+            else if (hasDetectObstaclesScript.playerOnLeft || hasDetectObstaclesScript.playerOnRight)
             {
                 speed = 0;
                 characterAnimations.WalkAnimation(false);               
@@ -83,8 +83,7 @@ public class EnemyController : MonoBehaviour
             else
             {
                 characterAnimations.WalkAnimation(true);
-            }
-            yield return null;
+            }         
             if (rb.velocity.x > 1f || rb.velocity.x < -1)
             {
                 speed = enemyConfig.speed / 1.5f;
@@ -93,6 +92,8 @@ public class EnemyController : MonoBehaviour
             {
                 speed = enemyConfig.speed;
             }
+
+            yield return null;
         }      
     }
 
@@ -105,17 +106,18 @@ public class EnemyController : MonoBehaviour
     {
         if (!collision.gameObject.tag.Equals("Player")) return;
 
-            if (hasDetectPlayerScript.playerOnLeft)
+            if (hasDetectObstaclesScript.playerOnLeft && direction == Vector2.left)
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 50, ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 100, ForceMode2D.Impulse);
                 collision.gameObject.GetComponent<HasDamage>().OnHasDamage();
             }
-            else if (hasDetectPlayerScript.playerOnRight)
+            else if (hasDetectObstaclesScript.playerOnRight && direction == Vector2.right)
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 50, ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 100, ForceMode2D.Impulse);
                 collision.gameObject.GetComponent<HasDamage>().OnHasDamage();
             }
 
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 30, ForceMode2D.Impulse);
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(-direction * 50, ForceMode2D.Impulse);
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 50, ForceMode2D.Impulse);
     }
 }

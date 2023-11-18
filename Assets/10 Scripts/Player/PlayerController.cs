@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UpForceWithTrampoline upForceWithTrampoline;
 
     private HasTouchGround hasTouchGroundScript;
-    public static bool isOnGround;
+    public static bool isOnGround, isOnCeil;
     [SerializeField] private float speed;
     private float forceMovement;
 
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     private void OnhasHurtJump()
     {
         if (rb.velocity.y > 0.5f) return;
-        rb.AddForce(Vector2.up * 185, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.up * 195, ForceMode2D.Impulse);
     }
 
     private void OnDisable()
@@ -131,15 +131,17 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         isOnGround = hasTouchGroundScript.isOnGround;
-
+        isOnCeil = hasTouchGroundScript.isOnCeil;
         forceMovement = inputManager.Player.HorMove.ReadValue<float>();
+
     }
-    void FixedUpdate()
+
+    private void FixedUpdate()
     {
         //Check if is on ground   
         if (forceMovement != 0)
         {
-            hasMove.OnHasMove(forceMovement, isOnGround, speed);
+            hasMove.OnHasMove(forceMovement, isOnGround || isOnCeil, speed);
             playerAnimations.WalkAnimation(true);
             if (forceMovement > 0)
             {
@@ -152,8 +154,8 @@ public class PlayerController : MonoBehaviour
                             parallax[i].MoveBackgroundRight();
                         }
                     }
-                }              
-                
+                }
+
                 lookAt.flipX = false;
                 playerLookAt = true;
             }
@@ -166,8 +168,8 @@ public class PlayerController : MonoBehaviour
                         parallax[i].MoveBackgroundLeft();
                     }
                 }
-                
-                
+
+
                 lookAt.flipX = true;
                 playerLookAt = false;
             }
@@ -176,6 +178,5 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimations.WalkAnimation(false);
         }
-        
     }
 }

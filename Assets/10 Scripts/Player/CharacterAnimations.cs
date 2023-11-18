@@ -36,4 +36,9 @@ public class CharacterAnimations : MonoBehaviour
     {
         animationsScript.PunchAnimation(animator, "Punch");
     }
+
+    public void BiteAnimation()
+    {
+        animationsScript.BiteAnimation(animator, "Bite");
+    }
 }

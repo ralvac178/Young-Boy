@@ -20,7 +20,7 @@ public class HasDetectEdges : MonoBehaviour
         size = normalSize / 3;
         //Get distance to use in boxcast
         //On x
-        xDistance = size.x + size.x / 2 + 0.5f;
+        xDistance = size.x + size.x / 2 + 0.75f;
 
         //On y
         yDistance = size.y + size.y / 2;
@@ -30,19 +30,17 @@ public class HasDetectEdges : MonoBehaviour
     void Update()
     {
         
-        centerRight = capsuleCollider2D.bounds.center + new Vector3(xDistance, -yDistance, 0);
+        centerRight = capsuleCollider2D.bounds.center + new Vector3(xDistance, 0, 0);
 
-        centerLeft = capsuleCollider2D.bounds.center - new Vector3(xDistance, yDistance, 0);
+        centerLeft = capsuleCollider2D.bounds.center - new Vector3(xDistance, 0, 0);
 
         //Edges
-        RaycastHit2D hitRight = Physics2D.BoxCast(centerRight, size, 0, Vector2.down, 0.02f, layerMask);
-        RaycastHit2D hitLeft= Physics2D.BoxCast(centerLeft, size, 0, Vector2.down, 0.02f, layerMask);
+        RaycastHit2D hitRight = Physics2D.BoxCast(centerRight, size, 0, Vector2.down, 0.5f, layerMask);
+        RaycastHit2D hitLeft= Physics2D.BoxCast(centerLeft, size, 0, Vector2.down, 0.5f, layerMask);
 
-        //Walls
-        RaycastHit2D hitRightWall = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, normalSize, CapsuleDirection2D.Horizontal, 0, Vector2.right,0.4f, layerMask);
-        RaycastHit2D hitLeftWall = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, normalSize, CapsuleDirection2D.Horizontal, 0, Vector2.left, 0.4f, layerMask);
-        bool isOnleftSide = hitLeft.collider == null || hitLeftWall.collider != null;
-        bool isOnRightSide = hitRight.collider == null || hitRightWall.collider != null;
+        
+        bool isOnleftSide = hitLeft.collider == null;
+        bool isOnRightSide = hitRight.collider == null;
 
         if (!isOnleftSide && isOnRightSide)
         {

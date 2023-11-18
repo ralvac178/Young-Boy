@@ -6,7 +6,7 @@ public class Jump : MonoBehaviour
 {
     public void OnJump(Rigidbody2D rb2D, float forceJump)
     {
-        if (PlayerController.isOnGround)
+        if (PlayerController.isOnGround || PlayerController.isOnCeil)
         {
             if (rb2D.velocity.y < 0.5f)
             {

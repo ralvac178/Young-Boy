@@ -33,4 +33,9 @@ public class Animations : MonoBehaviour, IAnimations
     {
         animator.SetTrigger(punchState);
     }
+
+    public void BiteAnimation(Animator animator, string bitState)
+    {
+        animator.SetTrigger(bitState);
+    }
 }
