@@ -21,8 +21,7 @@ public class HasDetectObstacle : MonoBehaviour
         enemyController = GetComponent<EnemyController>();
 
         normalSize = capsuleCollider2D.bounds.size/3;
-        Vector3 subDistance = new Vector3(0,capsuleCollider2D.bounds.center.y/2,0);
-        origin = capsuleCollider2D.bounds.center - subDistance;
+        origin = new Vector2(capsuleCollider2D.bounds.center.x, capsuleCollider2D.bounds.center.y);
     }
 
     // Update is called once per frame

@@ -293,10 +293,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerOnRight: 0
+  wallOnRight: 0
   playerOnLeft: 0
+  wallOnLeft: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 72
 --- !u!111 &851965516
 Animation:
   m_ObjectHideFlags: 0
