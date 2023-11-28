@@ -31,7 +31,11 @@ public class HasDetectObstacle : MonoBehaviour
         {
             if (transform.name.Contains("Shaman"))
             {
-                DetectPlayer(enemyController.direction, 0.4f);
+                DetectPlayer(enemyController.direction, 0.28f);
+            }
+            else if (transform.name.Contains("Barzag"))
+            {
+                DetectPlayer(enemyController.direction, 0.28f);
             }
         }
         else if (dragonController != null)

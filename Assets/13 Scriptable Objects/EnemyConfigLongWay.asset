@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e04638c36d8df428a41170f90fa468, type: 3}
   m_Name: EnemyConfigLongWay
   m_EditorClassIdentifier: 
-  type: 
-  force: 200
+  type: Barzag
   lives: 15
-  speed: 200
+  speed: 520

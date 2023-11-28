@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2704107506762925513}
   - component: {fileID: 2704107506762925515}
   - component: {fileID: 2704107506762925514}
-  - component: {fileID: 2704107506762925510}
   - component: {fileID: 2704107506762925511}
   - component: {fileID: 2704107506762925508}
   - component: {fileID: 2704107506762925509}
@@ -133,7 +132,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 80
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -166,23 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7229aa911663ebb4593d94065251f7ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2704107506762925510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2704107506762925518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622dddc8039353d4581ae035d0221de6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyConfig: {fileID: 11400000, guid: bda307839c393b0409fed18fd885e43e, type: 2}
-  hasMoveScript: {fileID: 2704107506762925515}
-  speed: 0
-  enableMovement: 1
-  direction: {x: 1, y: 0}
 --- !u!114 &2704107506762925511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +261,7 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.021348, y: 0.0014848411}
   m_Size: {x: 0.18599129, y: 0.41703027}
-  m_Direction: 0
+  m_Direction: 1
 --- !u!114 &-8112987188217995488
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public static bool playerLookAt = true;
 
-    [SerializeField] private Parallax[] parallax;
     private Rigidbody2D rb;
 
     public static bool isPunching;
@@ -42,6 +41,8 @@ public class PlayerController : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+
+        
     }
 
     private void Start()
@@ -147,11 +148,11 @@ public class PlayerController : MonoBehaviour
             {
                 if (rb.velocity.magnitude > 0.5f)
                 {
-                    for (int i = 0; i < parallax.Length; i++)
+                    for (int i = 0; i < CamaraMain.parallax.Length; i++)
                     {
-                        if (parallax[i] != null)
+                        if (CamaraMain.parallax[i] != null)
                         {
-                            parallax[i].MoveBackgroundRight();
+                            CamaraMain.parallax[i].MoveBackgroundRight();
                         }
                     }
                 }
@@ -161,11 +162,11 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (rb.velocity.magnitude < -0.5f)
+                if (rb.velocity.magnitude > 0.5f)
                 {
-                    for (int i = 0; i < parallax.Length; i++)
+                    for (int i = 0; i < CamaraMain.parallax.Length; i++)
                     {
-                        parallax[i].MoveBackgroundLeft();
+                        CamaraMain.parallax[i].MoveBackgroundLeft();
                     }
                 }
 

@@ -15,7 +15,7 @@ public class Parallax : MonoBehaviour
     public void MoveBackgroundRight()
     {
         meshRenderer.material.mainTextureOffset = 
-            new Vector2(meshRenderer.material.mainTextureOffset.x + Time.deltaTime*speed,0);
+            new Vector2(meshRenderer.material.mainTextureOffset.x + Time.deltaTime* speed, 0);
     }
 
     public void MoveBackgroundLeft()

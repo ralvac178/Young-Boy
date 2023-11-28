@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyConfig : ScriptableObject
 {
     public string type;
-    public int force;
+    //public int force;
     public int lives;
     public float speed;
 }

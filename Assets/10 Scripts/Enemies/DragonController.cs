@@ -8,7 +8,7 @@ public class DragonController : MonoBehaviour
     private HasMove hasMove;
     private Animator animator;
     private HasTouchGround hasTouchGround;
-    [SerializeField]  private PlayerController player;
+    private PlayerController player;
     public Vector2 direction;
     private HasDetectEdges hasDetectEdges;
     private HasDetectObstacle hasDetectObstacle;
@@ -16,6 +16,7 @@ public class DragonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
         hasMove = GetComponent<HasMove>();
         hasTouchGround = GetComponent<HasTouchGround>();
         animator = GetComponent<Animator>();
@@ -108,7 +109,7 @@ public class DragonController : MonoBehaviour
     private void AttackAnimation()
     {
         int random = Random.Range(0, 2);
-        if (random == 2) characterAnimations.PunchAnimation();
+        if (random == 1) characterAnimations.PunchAnimation();
         else characterAnimations.BiteAnimation();
     }
 }

@@ -14,18 +14,20 @@ public class OpenCasttleDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if (GameManager.instance.keys >= 0)
-            {
-                animator.SetTrigger("OpenDoor");
-                GameManager.instance.keys = 0;
-                SceneManager.LoadScene("Stage2", LoadSceneMode.Single);
-            }
-            else
-            {
-                Debug.Log("Yo haven't keys enought");
-            }
-        }
+        //if (collision.gameObject.CompareTag("Player"))
+        //{
+        //    if (GameManager.instance.keys >= 0)
+        //    {
+        //        animator.SetTrigger("OpenDoor");
+        //        GameManager.instance.keys = 0;
+                
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("Yo haven't keys enought");
+        //    }
+        //}
+
+        SceneManager.LoadScene("World2", LoadSceneMode.Single);
     }
 }

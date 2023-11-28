@@ -22,13 +22,20 @@ public class HasTouchGround : MonoBehaviour
 
         if (hitFloor.collider != null)
         {
-            isOnGround = true;
-            animator.SetBool("IsOnGround", true);
+            if (hitFloor.collider.IsTouchingLayers())
+            {
+                isOnGround = true;
+                animator.SetBool("IsOnGround", true);
+            }
         }
+        
         else if (hitCeil.collider != null)
         {
-            isOnCeil = true;
-            animator.SetBool("IsOnGround", true);
+            if (hitCeil.collider.IsTouchingLayers())
+            {
+                isOnGround = true;
+                animator.SetBool("IsOnGround", true);
+            }
         }
         else
         {
@@ -40,8 +47,8 @@ public class HasTouchGround : MonoBehaviour
 
     RaycastHit2D LookHit(LayerMask layerMask)
     {
-        RaycastHit2D hit = Physics2D.BoxCast(capsuleCollider.bounds.center,
-            capsuleCollider.bounds.size, 0, Vector2.down, 0.02f, layerMask);
+        RaycastHit2D hit = Physics2D.CapsuleCast(capsuleCollider.bounds.center,
+            capsuleCollider.bounds.size, CapsuleDirection2D.Vertical,0, Vector2.down, 0.02f,layerMask);
         return hit;
     }
 }

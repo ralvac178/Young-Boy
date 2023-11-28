@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 11100
-  player: {fileID: 0}
   direction: {x: 0, y: 0}
 --- !u!114 &885772596195940351
 MonoBehaviour:
@@ -206,7 +205,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 4200
+  m_Mass: 1950
   m_LinearDrag: 1.2
   m_AngularDrag: 0.05
   m_GravityScale: 1

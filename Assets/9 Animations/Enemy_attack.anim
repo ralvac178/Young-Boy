@@ -41,15 +41,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.16666667
         value: -0.026151514
-        inSlope: 0
-        outSlope: 0
+        inSlope: -0.36888793
+        outSlope: -0.36888793
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.25
-        value: -0.0067640305
+        value: -0.048768483
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -87,15 +87,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.16666667
         value: 0.4670705
-        inSlope: 2.1078897
-        outSlope: 2.1078897
+        inSlope: 2.7374945
+        outSlope: 2.7374945
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.25
-        value: 0.5548992
+        value: 0.6389093
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -124,15 +124,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.16666667
         value: 0.4670705
-        inSlope: 0.55147576
-        outSlope: 0.55147576
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.25
-        value: 0.5548992
+        value: 0.3787832
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -169,7 +169,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.25
-        value: 0.001484847
+        value: -0.016126892
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -227,18 +227,18 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    - serializedVersion: 2
-      path: 0
       attribute: 1872933342
       script: {fileID: 0}
       typeID: 70
       customType: 0
       isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 182242459, guid: 3fb3be2ed1c8e8d48b680efe1ac9ea2a, type: 3}
     - {fileID: -1995617684, guid: 3fb3be2ed1c8e8d48b680efe1ac9ea2a, type: 3}
@@ -289,15 +289,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.16666667
         value: -0.026151514
-        inSlope: 0
-        outSlope: 0
+        inSlope: -0.36888793
+        outSlope: -0.36888793
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.25
-        value: -0.0067640305
+        value: -0.048768483
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -335,15 +335,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.16666667
         value: 0.4670705
-        inSlope: 2.1078897
-        outSlope: 2.1078897
+        inSlope: 2.7374945
+        outSlope: 2.7374945
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.25
-        value: 0.5548992
+        value: 0.6389093
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -372,15 +372,15 @@ AnimationClip:
       - serializedVersion: 3
         time: 0.16666667
         value: 0.4670705
-        inSlope: 0.55147576
-        outSlope: 0.55147576
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.25
-        value: 0.5548992
+        value: 0.3787832
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -417,7 +417,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.25
-        value: 0.001484847
+        value: -0.016126892
         inSlope: 0
         outSlope: 0
         tangentMode: 136

@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: EnemyConfigShaman
   m_EditorClassIdentifier: 
   type: Shaman
-  force: 150
   lives: 5
-  speed: 185
+  speed: 360

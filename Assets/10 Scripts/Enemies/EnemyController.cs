@@ -39,7 +39,9 @@ public class EnemyController : MonoBehaviour
             && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Enemy_hurt") &&
             !(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
         {
-            characterAnimations.PunchAnimation();
+            speed = 0;
+            characterAnimations.WalkAnimation(false);
+            AttackAnimation();
         }
     }
     // Update is called once per frame
@@ -75,15 +77,13 @@ public class EnemyController : MonoBehaviour
                 characterAnimations.WalkAnimation(true);
                 yield return new WaitForSeconds(1.5f);
             }
-            else if (hasDetectObstaclesScript.playerOnLeft || hasDetectObstaclesScript.playerOnRight)
-            {
-                speed = 0;
-                characterAnimations.WalkAnimation(false);               
-            }
             else
             {
+                speed = enemyConfig.speed;
                 characterAnimations.WalkAnimation(true);
-            }         
+            }   
+            
+            ////////////////////////////// Speed Regulator
             if (rb.velocity.x > 1f || rb.velocity.x < -1)
             {
                 speed = enemyConfig.speed / 1.5f;
@@ -108,16 +108,31 @@ public class EnemyController : MonoBehaviour
 
             if (hasDetectObstaclesScript.playerOnLeft && direction == Vector2.left)
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 100, ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 120, ForceMode2D.Impulse);
                 collision.gameObject.GetComponent<HasDamage>().OnHasDamage();
             }
             else if (hasDetectObstaclesScript.playerOnRight && direction == Vector2.right)
             {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 100, ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 120, ForceMode2D.Impulse);
                 collision.gameObject.GetComponent<HasDamage>().OnHasDamage();
             }
 
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(-direction * 50, ForceMode2D.Impulse);
+        if (transform.name.Contains("Barzag"))
+        {
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(-direction * 60, ForceMode2D.Impulse);
+        }
+        else if (transform.name.Contains("Shaman"))
+        {
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(-direction * 40, ForceMode2D.Impulse);
+        }
+        
         collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 50, ForceMode2D.Impulse);
+    }
+
+    private void AttackAnimation()
+    {
+        int random = Random.Range(0, 2);
+        if (random == 1) characterAnimations.PunchAnimation();
+        else characterAnimations.BiteAnimation();
     }
 }
