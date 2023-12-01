@@ -6,6 +6,6 @@ public class HasGetCoin : MonoBehaviour
 {
     public void AddPoints(int points)
     {
-        GameManager.points += points;
+        GameManager.instance.AddPoints(points);
     }
 }

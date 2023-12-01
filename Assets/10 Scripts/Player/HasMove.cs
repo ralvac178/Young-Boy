@@ -13,9 +13,6 @@ public class HasMove : MonoBehaviour
 
     public void OnHasMove(float dir, bool isOnFloor, float speed)
     {
-        if (!PlayerController.isOnCeil)
-        {
-            movementScript.HorMove(rb2D, speed, dir, isOnFloor);
-        }     
+        movementScript.HorMove(rb2D, speed, dir, isOnFloor);    
     }
 }

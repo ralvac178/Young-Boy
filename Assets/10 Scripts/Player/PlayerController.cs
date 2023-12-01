@@ -40,9 +40,7 @@ public class PlayerController : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
-
-        
+        DontDestroyOnLoad(this.gameObject);   
     }
 
     private void Start()
@@ -64,7 +62,7 @@ public class PlayerController : MonoBehaviour
 
         inputManager.Player.Shoot.performed += _ =>
         {
-            if (GameManager.instance.arrows > 0)
+            if (GameManager.instance.GetArrows() > 0)
             {
                 playerAnimations.ShootAnimation();
                 GameManager.instance.SubArrows();
@@ -101,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         inputManager.Player.Shoot.performed -= _ =>
         {
-            if (GameManager.instance.arrows > 0)
+            if (GameManager.instance.GetArrows() > 0)
             {
                 playerAnimations.ShootAnimation();
                 GameManager.instance.SubArrows();

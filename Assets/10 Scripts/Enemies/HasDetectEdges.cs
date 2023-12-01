@@ -35,8 +35,8 @@ public class HasDetectEdges : MonoBehaviour
         centerLeft = capsuleCollider2D.bounds.center - new Vector3(xDistance, 0, 0);
 
         //Edges
-        RaycastHit2D hitRight = Physics2D.BoxCast(centerRight, size, 0, Vector2.down, 0.5f, layerMask);
-        RaycastHit2D hitLeft= Physics2D.BoxCast(centerLeft, size, 0, Vector2.down, 0.5f, layerMask);
+        RaycastHit2D hitRight = Physics2D.BoxCast(centerRight, size, 0, Vector2.down, 0.25f, layerMask);
+        RaycastHit2D hitLeft= Physics2D.BoxCast(centerLeft, size, 0, Vector2.down, 0.25f, layerMask);
 
         
         bool isOnleftSide = hitLeft.collider == null;

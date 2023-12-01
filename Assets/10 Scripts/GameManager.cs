@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static int points;
-    public int arrows;
+    private int coins = 0;
+    private int lives = 5;
+    private int arrows = 0;
     public int keys;
+    private int level = 1;
     public static GameManager instance;
 
+    [SerializeField] private TextMeshProUGUI levelTextGUI, coinsTextGUI, arrowsTextGUI;
+    [SerializeField] private Image livesImage;
 
     // Start is called before the first frame update
     void Awake()
@@ -25,19 +31,67 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Start()
+    {
+        levelTextGUI.text = $"L{level}";
+        UpdateLives(lives);
+    }
+
     // Update is called once per frame
     void Update()
     {
-
+  
     }
 
     public void AddArrows()
     {
         arrows += 5;
+        UpdateArrows();
     }
 
     public void SubArrows()
     {
         arrows--;
+        UpdateArrows();
     }
+
+    public void UpdateLives(int lives)
+    {
+        livesImage.GetComponent<RectTransform>().sizeDelta = new Vector2(48*lives,50);
+    }
+
+    public void UpdateCoins(int coins)
+    {
+        coinsTextGUI.text = $"{coins}";
+    }
+
+    public void AddPoints(int points)
+    {
+        coins += points;
+        UpdateCoins(coins);
+    }
+
+    public void UpdateArrows()
+    {
+        arrowsTextGUI.text = $"{arrows}";
+    }
+
+    public int GetArrows()
+    {
+        return arrows;
+    }
+
+    public void AddLives(int livesToAdd)
+    {
+        lives += livesToAdd;
+        UpdateLives(lives);
+    }
+
+    public void SubLives(int livesToSub)
+    {
+        lives -= livesToSub;
+        UpdateLives(lives);
+    }
+
+
 }

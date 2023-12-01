@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HasDamage : MonoBehaviour
 {
-    private CharacterAnimations playerAnimationsScript;
+    private CharacterAnimations animationsScript;
 
     private SpriteRenderer sp;
     private Rigidbody2D rb2D;
@@ -12,13 +12,17 @@ public class HasDamage : MonoBehaviour
     {
         sp = GetComponent<SpriteRenderer>();
         rb2D = GetComponent<Rigidbody2D>();
-        playerAnimationsScript = GetComponent<CharacterAnimations>();
+        animationsScript = GetComponent<CharacterAnimations>();
     }
 
     public void OnHasDamage()
     {
         TurnToRed();
-        playerAnimationsScript.HurtAnimation();
+        animationsScript.HurtAnimation();
+        if (transform.gameObject.CompareTag("Player"))
+        {
+            GameManager.instance.SubLives(1);
+        }     
     }
 
     public void TurnToRed()
