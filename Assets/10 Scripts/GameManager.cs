@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [SerializeField] private TextMeshProUGUI levelTextGUI, coinsTextGUI, arrowsTextGUI;
-    [SerializeField] private Image livesImage;
+    [SerializeField] private Image livesImage, redKey, yellowKey, blueKey;
 
     // Start is called before the first frame update
     void Awake()
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        levelTextGUI.text = $"L{level}";
+        UpdateLevelText();
         UpdateLives(lives);
     }
 
@@ -93,5 +93,35 @@ public class GameManager : MonoBehaviour
         UpdateLives(lives);
     }
 
+    public void UpdateLevelText()
+    {
+        levelTextGUI.text = $"L{level}";
+    }
 
+    public void NextLevel()
+    {
+        level++;
+        UpdateLevelText();
+    }
+
+    public void SetKey(string color)
+    {
+        switch (color)
+        {
+            case "blue":
+                EnableKeyGet(blueKey);
+                break;
+            case "yellow":
+                EnableKeyGet(yellowKey);
+                break;
+            default:
+                EnableKeyGet(redKey);
+                break;
+        }
+    }
+
+    public void EnableKeyGet(Image keyImage)
+    {
+        keyImage.color = new Color(255, 255, 255, 255);
+    }
 }

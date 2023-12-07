@@ -201,6 +201,7 @@ MonoBehaviour:
   enemyConfig: {fileID: 11400000, guid: bda307839c393b0409fed18fd885e43e, type: 2}
   hasMoveScript: {fileID: 2704107506762925515}
   speed: 0
+  lives: 3
   enableMovement: 1
   direction: {x: 1, y: 0}
 --- !u!114 &2704107506762925509

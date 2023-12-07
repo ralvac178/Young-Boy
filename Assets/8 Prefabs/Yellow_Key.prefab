@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 8843944741521881471}
   m_Layer: 0
   m_Name: Yellow_Key
-  m_TagString: CollectableArrows
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

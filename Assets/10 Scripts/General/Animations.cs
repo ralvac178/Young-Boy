@@ -38,4 +38,9 @@ public class Animations : MonoBehaviour, IAnimations
     {
         animator.SetTrigger(bitState);
     }
+
+    public void DeadAnimation(Animator animator, string deadState)
+    {
+        animator.SetTrigger(deadState);
+    }
 }

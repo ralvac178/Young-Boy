@@ -41,4 +41,9 @@ public class CharacterAnimations : MonoBehaviour
     {
         animationsScript.BiteAnimation(animator, "Bite");
     }
+
+    public void DeadAnimation()
+    {
+        animationsScript.DeadAnimation(animator, "Dead");
+    }
 }

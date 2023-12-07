@@ -5,24 +5,36 @@ using UnityEngine;
 public class HasDamage : MonoBehaviour
 {
     private CharacterAnimations animationsScript;
-
+    private EnemyController enemyController;
     private SpriteRenderer sp;
-    private Rigidbody2D rb2D;
+
     private void Start()
     {
+        enemyController = GetComponent<EnemyController>();
         sp = GetComponent<SpriteRenderer>();
-        rb2D = GetComponent<Rigidbody2D>();
         animationsScript = GetComponent<CharacterAnimations>();
     }
 
     public void OnHasDamage()
     {
-        TurnToRed();
+        
         animationsScript.HurtAnimation();
         if (transform.gameObject.CompareTag("Player"))
         {
             GameManager.instance.SubLives(1);
-        }     
+            TurnToRed();
+        }
+        else
+        {
+            if (enemyController!= null && enemyController.isAlive)
+            {
+                enemyController.SubLives();
+                if (enemyController.lives > 1)
+                {
+                    TurnToRed();
+                }
+            }
+        }    
     }
 
     public void TurnToRed()
@@ -35,8 +47,9 @@ public class HasDamage : MonoBehaviour
         {
             sp.color = Color.yellow;
         }
-        
+
         Invoke(nameof(TurnToWhite), 2f);
+
     }
 
     public void TurnToWhite()

@@ -7,7 +7,7 @@ public class CollisionProvider : MonoBehaviour
     public delegate void TrapCollision();
     public static TrapCollision trapCollision;
 
-    public delegate void KeyCollision();
+    public delegate void KeyCollision(string color);
     public static KeyCollision keyCollision;
 
     public delegate void LavapCollision();
@@ -47,8 +47,8 @@ public class CollisionProvider : MonoBehaviour
         lavaCollision?.Invoke();
     }
 
-    public static void OnKeyCollision()
+    public static void OnKeyCollision(string color)
     {
-        keyCollision?.Invoke();
+        keyCollision?.Invoke(color);
     }
 }

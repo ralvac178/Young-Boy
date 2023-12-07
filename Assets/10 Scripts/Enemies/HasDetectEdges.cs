@@ -20,7 +20,7 @@ public class HasDetectEdges : MonoBehaviour
         size = normalSize / 3;
         //Get distance to use in boxcast
         //On x
-        xDistance = size.x + size.x / 2 + 0.75f;
+        xDistance = size.x + size.x / 2 + 0.35f;
 
         //On y
         yDistance = size.y + size.y / 2;
