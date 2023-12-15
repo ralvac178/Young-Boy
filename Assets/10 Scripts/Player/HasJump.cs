@@ -16,4 +16,9 @@ public class HasJump : MonoBehaviour
     {
         jumpScript.OnJump(rb2D, jumpForce);
     }
+
+    public void EnableDoubleJump()
+    {
+        PlayerController.canDoubleJump = true;
+    }
 }

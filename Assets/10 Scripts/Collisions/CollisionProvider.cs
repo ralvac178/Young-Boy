@@ -19,6 +19,9 @@ public class CollisionProvider : MonoBehaviour
     public delegate void ArrowsCollision();
     public static ArrowsCollision arrowsCollision;
 
+    public delegate void PoisonsCollision();
+    public static PoisonsCollision poisonCollision;
+
     public delegate void TrampolineCollision(float force);
     public static TrampolineCollision trampolineCollision;
 
@@ -50,5 +53,10 @@ public class CollisionProvider : MonoBehaviour
     public static void OnKeyCollision(string color)
     {
         keyCollision?.Invoke(color);
+    }
+
+    public static void OnPoisonCollision()
+    {
+        poisonCollision?.Invoke();
     }
 }

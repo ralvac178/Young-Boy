@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
 
     public static bool isPunching;
+    public static bool canDoubleJump;
     // Start is called before the first frame update
     void Awake()
     {
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.arrowsCollision += GameManager.instance.AddArrows;
         CollisionProvider.lavaCollision += OnhasHurtJump;
         CollisionProvider.lavaCollision += hasDamage.OnHasDamage;
+        CollisionProvider.poisonCollision += hasjump.EnableDoubleJump;
         SceneManager.sceneLoaded += GetComponent<InitPosPlayer>().NewPosPlayer;
         CollisionProvider.keyCollision += GameManager.instance.SetKey;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
@@ -121,6 +123,7 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.lavaCollision -= OnhasHurtJump;
         CollisionProvider.lavaCollision -= hasDamage.OnHasDamage;
         CollisionProvider.keyCollision -= GameManager.instance.SetKey;
+        CollisionProvider.poisonCollision -= hasjump.EnableDoubleJump;
         SceneManager.sceneLoaded -= GetComponent<InitPosPlayer>().NewPosPlayer;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
 

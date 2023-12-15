@@ -43,6 +43,11 @@ public class CollisionListener : MonoBehaviour
             
             collision.gameObject.SetActive(false);
         }
+        else if (collision.gameObject.tag.Equals("Potion"))
+        {
+            CollisionProvider.OnPoisonCollision();
+            collision.gameObject.SetActive(false);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
