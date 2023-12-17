@@ -22,7 +22,11 @@ public class MenuButtons : MonoBehaviour, IPointerEnterHandler
 
     public void GoToScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Loading");
     }
 
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
