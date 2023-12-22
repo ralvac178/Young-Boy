@@ -14,12 +14,14 @@ public class Parallax : MonoBehaviour
 
     public void MoveBackgroundRight()
     {
+        if (meshRenderer == null) return;
         meshRenderer.material.mainTextureOffset = 
             new Vector2(meshRenderer.material.mainTextureOffset.x + Time.deltaTime* speed, 0);
     }
 
     public void MoveBackgroundLeft()
     {
+        if (meshRenderer == null) return;
         meshRenderer.material.mainTextureOffset =
             new Vector2(meshRenderer.material.mainTextureOffset.x - Time.deltaTime * speed, 0);
     }

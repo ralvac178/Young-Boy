@@ -21,16 +21,18 @@ public class HasDamage : MonoBehaviour
         animationsScript.HurtAnimation();
         if (transform.gameObject.CompareTag("Player"))
         {
+            SoundManager.instance.SoundPlayerHurt();
             GameManager.instance.SubLives(1);
             TurnToRed();
         }
         else
         {
             if (enemyController!= null && enemyController.isAlive)
-            {
+            {              
                 enemyController.SubLives();
                 if (enemyController.lives > 1)
                 {
+                    SoundManager.instance.SoundEnemyHurt();
                     TurnToRed();
                 }
             }

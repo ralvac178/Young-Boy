@@ -18,6 +18,7 @@ public class CollisionListener : MonoBehaviour
         else if (collision.gameObject.tag.Equals("Coin"))
         {
             CollisionProvider.OnCoinCollision(1);
+            SoundManager.instance.SoundCoinCollected();
             collision.gameObject.SetActive(false);
         }
         else if (collision.gameObject.tag.Equals("CollectableArrows"))
@@ -43,9 +44,9 @@ public class CollisionListener : MonoBehaviour
             
             collision.gameObject.SetActive(false);
         }
-        else if (collision.gameObject.tag.Equals("Potion"))
+        else if (collision.gameObject.tag.Equals("DJGem"))
         {
-            CollisionProvider.OnPoisonCollision();
+            CollisionProvider.OnDoubleJumpPowerUpCollision();
             collision.gameObject.SetActive(false);
         }
     }

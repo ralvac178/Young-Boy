@@ -11,10 +11,12 @@ public class HasShoot : MonoBehaviour
     public void ShootArrow()
     {
         Instantiate(arrow, shooter.transform.position - new Vector3(0.1f,0,0), Quaternion.identity);
+        SoundManager.instance.SoundPlayerAttack();
     }
 
     public void InitPunch()
     {
+        SoundManager.instance.SoundPlayerAttack();
         PlayerController.isPunching = true;
         Invoke(nameof(EndPunch), 0.75f);
     }

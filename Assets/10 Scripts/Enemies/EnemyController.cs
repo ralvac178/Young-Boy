@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private HasMove hasMoveScript;
     public bool isAlive = true;
     public float speed;
-    [HideInInspector] public int lives = 3; 
+    [HideInInspector] public int lives; 
 
     private HasTouchGround hasTouchGroundScript;
     private HasDetectEdges hasDetectEdgesScript;
@@ -23,6 +23,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lives = enemyConfig.lives;
         speed = enemyConfig.speed;
         sr = GetComponent<SpriteRenderer>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -39,7 +40,7 @@ public class EnemyController : MonoBehaviour
         if (lives <= 0) return;
 
         if ((hasDetectObstaclesScript.playerOnLeft || hasDetectObstaclesScript.playerOnRight)
-            && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Enemy_hurt") &&
+            && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Enemy_hurt") &&
             !(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
         {
             speed = 0;
@@ -50,8 +51,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (lives <= 0) return;
-        hasMoveScript.OnHasMove(direction.x, hasTouchGroundScript.isOnGround, speed);
+        if (lives > 0) hasMoveScript.OnHasMove(direction.x, hasTouchGroundScript.isOnGround, speed);
     }
 
     IEnumerator LookAt()
@@ -113,8 +113,7 @@ public class EnemyController : MonoBehaviour
 
         if (!collision.gameObject.tag.Equals("Player")) return;
 
-        if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Enemy_attack2") ||
-            GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Enemy_attack") &&
+        if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("attack") &&
             GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
         {
             if (hasDetectObstaclesScript.playerOnLeft && direction == Vector2.left)

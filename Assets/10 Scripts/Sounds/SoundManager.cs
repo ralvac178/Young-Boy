@@ -7,12 +7,27 @@ public class SoundManager : MonoBehaviour
 {
     private AudioSource[] audioSourceList;
     [SerializeField] private Slider volumeSlider;
+    public static SoundManager instance;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSourceList = GetComponents<AudioSource>();
 
+    }
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     // Mute all menu sounds
@@ -64,4 +79,39 @@ public class SoundManager : MonoBehaviour
     }
 
     // Sounds of Player
+    public void SoundPlayerHurt()
+    {
+        if (!audioSourceList[7].isPlaying)
+        {
+            audioSourceList[2].Play();
+        }      
+    }
+
+    public void SoundPlayerJump()
+    {
+        audioSourceList[4].Play();
+    }
+
+    public void SoundPlayerDoubleJump()
+    {
+        audioSourceList[5].Play();
+    }
+
+    public void SoundPlayerAttack()
+    {
+        audioSourceList[7].Play();
+    }
+
+    // Sounds of Items collected
+
+    public void SoundCoinCollected()
+    {
+        audioSourceList[6].Play();
+    }
+
+    // Sounds of Enemies
+    public void SoundEnemyHurt()
+    {
+        audioSourceList[3].Play();
+    }
 }

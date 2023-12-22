@@ -1,18 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadingScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private string message = "Loading";
+    [SerializeField] private TextMeshProUGUI loadingText;
+    [SerializeField] private Image loadBar;
+    private int levelToGo;
+
+    private void Start()
     {
-        //loadingBar.localScale = new Vector3(progress, loadingBar.localScale.y, loadingBar.localScale.z);
+        if (GameManager.instance == null)
+        {
+            levelToGo = 1;
+        }
+        else
+        {
+            levelToGo = GameManager.instance.GetLevel();
+        }
+
+        StartCoroutine(nameof(LoadingPoints));
+        StartCoroutine(nameof(LoadingAsycScene));
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator LoadingPoints()
     {
-        
+        string textToShow = message;
+        while (true)
+        {          
+            for (int i = 0; i < 4; i++)
+            {
+                loadingText.text = textToShow;
+                textToShow = textToShow.Insert(textToShow.Length, ".");                
+                yield return new WaitForSecondsRealtime(0.8f);
+            }
+            yield return null;
+            textToShow = message;
+        }
+    }
+
+    public IEnumerator LoadingAsycScene()
+    {
+        // Crear una operación de carga asíncrona
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelToGo);
+
+        // No permitir que la escena se active inmediatamente
+        asyncLoad.allowSceneActivation = false;
+
+        while (!asyncLoad.isDone)
+        {
+            // Obtener el progreso de carga (de 0.0 a 1.0)
+            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+
+            // Actualizar la barra de carga
+            loadBar.fillAmount = progress;
+
+            // Si la carga está casi completa (0.9f es casi completo en LoadSceneAsync)
+            if (asyncLoad.progress >= 0.9f)
+            {
+                // Permitir que la escena se active
+                yield return new WaitForSecondsRealtime(3);
+                asyncLoad.allowSceneActivation = true;
+            }
+
+            yield return null;
+        }
     }
 }

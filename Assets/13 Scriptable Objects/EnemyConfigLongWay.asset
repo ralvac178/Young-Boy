@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: EnemyConfigLongWay
   m_EditorClassIdentifier: 
   type: Barzag
-  lives: 15
-  speed: 520
+  lives: 5
+  speed: 540

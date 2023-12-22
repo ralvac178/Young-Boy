@@ -11,7 +11,7 @@ public class GetGem : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameManager.instance.NextLevel();
-            SceneManager.LoadScene("World2", LoadSceneMode.Single);
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
         }       
     }
 }

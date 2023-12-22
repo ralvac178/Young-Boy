@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI levelTextGUI, coinsTextGUI, arrowsTextGUI;
     [SerializeField] private Image livesImage, redKey, yellowKey, blueKey;
+    [SerializeField] private Image dJGem, punchMode, arrowMode;
 
     // Start is called before the first frame update
     void Awake()
@@ -109,19 +110,56 @@ public class GameManager : MonoBehaviour
         switch (color)
         {
             case "blue":
-                EnableKeyGet(blueKey);
+                EnableGotItem(blueKey);
                 break;
             case "yellow":
-                EnableKeyGet(yellowKey);
+                EnableGotItem(yellowKey);
                 break;
             default:
-                EnableKeyGet(redKey);
+                EnableGotItem(redKey);
                 break;
         }
     }
 
-    public void EnableKeyGet(Image keyImage)
+    public void EnableGotItem(Image itemImage)
     {
-        keyImage.color = new Color(255, 255, 255, 255);
+        itemImage.color = new Color(1, 1, 1, 1);
+    }
+
+    public void DisableGotItem(Image itemImage)
+    {
+        itemImage.color = new Color(1, 1, 1, 0.3921569f);
+    }
+
+    public void DisableItem(Image itemImage)
+    {
+        itemImage.color = new Color(1, 1, 1, 0);
+    }
+
+    public int GetLevel()
+    {
+        return level;
+    }
+
+    public void SetDoubleJumpGem()
+    {
+        EnableGotItem(dJGem);
+    }
+
+    public void DisableDoubleJumpIem()
+    {
+        DisableGotItem(dJGem);
+    }
+
+    public void EnablePunchAttackItem()
+    {
+        EnableGotItem(punchMode);
+        DisableItem(arrowMode);
+    }
+
+    public void EnableArrowAttackItem()
+    {
+        EnableGotItem(arrowMode);
+        DisableItem(punchMode);
     }
 }

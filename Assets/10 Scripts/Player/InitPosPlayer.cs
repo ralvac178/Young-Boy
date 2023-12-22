@@ -7,7 +7,18 @@ public class InitPosPlayer : MonoBehaviour
 {
     public void NewPosPlayer(Scene scene, LoadSceneMode loadSceneMode)
     {
-        Transform initPos = GameObject.Find("InitPosPlayer").transform;
-        transform.position = initPos.position;
+        GameObject initPosGameObject = GameObject.Find("InitPosPlayer");
+        if (initPosGameObject != null)
+        {
+            Transform initPos = initPosGameObject.transform;
+
+            if (initPos != null)
+            {
+                transform.position = initPos.position;
+            }
+        }
+        
+
+        
     }
 }

@@ -53,6 +53,15 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac1c1539-c499-42f9-995b-c5a9aa72479b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -110,6 +119,17 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7806097d-602e-438a-ac91-0648e343921a"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Key"",
+                    ""action"": ""ChangeAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -133,6 +153,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_HorMove = m_Player.FindAction("HorMove", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
+        m_Player_ChangeAttack = m_Player.FindAction("ChangeAttack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -197,6 +218,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_HorMove;
     private readonly InputAction m_Player_Shoot;
+    private readonly InputAction m_Player_ChangeAttack;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -204,6 +226,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @HorMove => m_Wrapper.m_Player_HorMove;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
+        public InputAction @ChangeAttack => m_Wrapper.m_Player_ChangeAttack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -222,6 +245,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
+            @ChangeAttack.started += instance.OnChangeAttack;
+            @ChangeAttack.performed += instance.OnChangeAttack;
+            @ChangeAttack.canceled += instance.OnChangeAttack;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -235,6 +261,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
+            @ChangeAttack.started -= instance.OnChangeAttack;
+            @ChangeAttack.performed -= instance.OnChangeAttack;
+            @ChangeAttack.canceled -= instance.OnChangeAttack;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -266,5 +295,6 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnHorMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnChangeAttack(InputAction.CallbackContext context);
     }
 }

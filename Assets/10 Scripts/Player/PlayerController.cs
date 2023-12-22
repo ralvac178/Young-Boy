@@ -29,6 +29,14 @@ public class PlayerController : MonoBehaviour
 
     public static bool isPunching;
     public static bool canDoubleJump;
+
+    private Dictionary<int, string> attackOptions = new Dictionary<int, string>()
+    {
+        {1,"Punch"},
+        {2,"Arrow"}
+    };
+
+    private string attackType = "Punch";
     // Start is called before the first frame update
     void Awake()
     {
@@ -53,6 +61,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        if (SceneManager.GetActiveScene().name.Equals("Loading"))
+        {
+            return;
+        }
+
         inputManager.Enable();
 
         inputManager.Player.Jump.performed += _ =>
@@ -61,12 +74,31 @@ public class PlayerController : MonoBehaviour
             playerAnimations.JumpAnimation();
         };
 
+        inputManager.Player.ChangeAttack.performed += _ =>
+        {
+            if (GameManager.instance.GetArrows() > 0 && attackType.Equals("Punch"))
+            {
+                attackType = attackOptions[2];
+                GameManager.instance.EnableArrowAttackItem();
+            }
+            else if (GameManager.instance.GetArrows() > 0 && attackType.Equals("Arrow"))
+            {
+                attackType = attackOptions[1];
+                GameManager.instance.EnablePunchAttackItem();
+            }
+        };
+
         inputManager.Player.Shoot.performed += _ =>
         {
-            if (GameManager.instance.GetArrows() > 0)
+            if (attackType.Equals(attackOptions[2]))
             {
                 playerAnimations.ShootAnimation();
                 GameManager.instance.SubArrows();
+                if (GameManager.instance.GetArrows() <= 0)
+                {
+                    attackType = attackOptions[1];
+                    GameManager.instance.EnablePunchAttackItem();
+                }
             }
             else
             {
@@ -80,7 +112,8 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.arrowsCollision += GameManager.instance.AddArrows;
         CollisionProvider.lavaCollision += OnhasHurtJump;
         CollisionProvider.lavaCollision += hasDamage.OnHasDamage;
-        CollisionProvider.poisonCollision += hasjump.EnableDoubleJump;
+        CollisionProvider.doubleJumpPowerUpCollision += hasjump.EnableDoubleJump;
+        CollisionProvider.doubleJumpPowerUpCollision += GameManager.instance.SetDoubleJumpGem;
         SceneManager.sceneLoaded += GetComponent<InitPosPlayer>().NewPosPlayer;
         CollisionProvider.keyCollision += GameManager.instance.SetKey;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
@@ -94,6 +127,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
+        if (SceneManager.GetActiveScene().name.Equals("Loading"))
+        {
+            return;
+        }
+
         inputManager.Player.Jump.performed -= _ =>
         {
             hasjump.OnHasJump();
@@ -123,7 +161,8 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.lavaCollision -= OnhasHurtJump;
         CollisionProvider.lavaCollision -= hasDamage.OnHasDamage;
         CollisionProvider.keyCollision -= GameManager.instance.SetKey;
-        CollisionProvider.poisonCollision -= hasjump.EnableDoubleJump;
+        CollisionProvider.doubleJumpPowerUpCollision -= hasjump.EnableDoubleJump;
+        CollisionProvider.doubleJumpPowerUpCollision -= GameManager.instance.SetDoubleJumpGem;
         SceneManager.sceneLoaded -= GetComponent<InitPosPlayer>().NewPosPlayer;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
 
