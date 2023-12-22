@@ -114,4 +114,27 @@ public class SoundManager : MonoBehaviour
     {
         audioSourceList[3].Play();
     }
+
+    // Steps Player
+    public void SoundPlayerStep1()
+    {
+        audioSourceList[8].Play();
+    }
+
+    public void SoundPlayerStep2()
+    {
+        audioSourceList[9].Play();
+    }
+
+    // Get Gem
+
+    public void SoundPlayerGotGem()
+    {
+        audioSourceList[10].Play();
+    }
+
+    public void SoundPlayerGotKey()
+    {
+        audioSourceList[11].Play();
+    }
 }

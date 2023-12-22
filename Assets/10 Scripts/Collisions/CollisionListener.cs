@@ -41,7 +41,8 @@ public class CollisionListener : MonoBehaviour
                     CollisionProvider.OnKeyCollision("red"); ;
                     break;
             }
-            
+
+            SoundManager.instance.SoundPlayerGotKey();
             collision.gameObject.SetActive(false);
         }
         else if (collision.gameObject.tag.Equals("DJGem"))
@@ -52,11 +53,7 @@ public class CollisionListener : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("Trampoline"))
-        {
-            collision.gameObject.transform.GetComponent<Animator>().SetTrigger("Up");
-        }
-        else if (collision.gameObject.tag.Equals("Pusher"))
+        if (collision.gameObject.tag.Equals("Pusher"))
         {
             collision.gameObject.transform.GetComponent<Animator>().SetTrigger("Pressed");
             collision.gameObject.layer = LayerMask.NameToLayer("Floor");
@@ -88,14 +85,6 @@ public class CollisionListener : MonoBehaviour
         {
             hasTouchGround.isOnGround = true;
         }
-        //if (collision.gameObject.tag.Equals("Trampoline"))
-        //{
-        //    float force = collision.gameObject.transform.GetComponent<Trampoline>().force;
-        //    if (Trampoline.isAtTop)
-        //    {
-        //        CollisionProvider.OnTrampolineCollision(force);
-        //    }
-        //}
     }
 
     private void OnCollisionExit2D(Collision2D collision)

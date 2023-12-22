@@ -11,6 +11,7 @@ public class GetGem : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameManager.instance.NextLevel();
+            SoundManager.instance.SoundPlayerGotGem();
             SceneManager.LoadScene(0, LoadSceneMode.Single);
         }       
     }
