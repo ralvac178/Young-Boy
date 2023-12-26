@@ -7,6 +7,7 @@ public class HasDamage : MonoBehaviour
     private CharacterAnimations animationsScript;
     private EnemyController enemyController;
     private SpriteRenderer sp;
+    [HideInInspector] public bool isDamage;
 
     private void Start()
     {
@@ -21,42 +22,58 @@ public class HasDamage : MonoBehaviour
         animationsScript.HurtAnimation();
         if (transform.gameObject.CompareTag("Player"))
         {
-            SoundManager.instance.SoundPlayerHurt();
             GameManager.instance.SubLives(1);
-            TurnToRed();
+            TurnColorHurt();
+            SoundManager.instance.SoundPlayerHurt();
+            if (GameManager.instance.GetLives() <= 0)
+            {
+                GameManager.instance.gameOver = true;
+                // Enable GameOver Canvas                          
+            }
         }
         else
         {
             if (enemyController!= null && enemyController.isAlive)
             {              
                 enemyController.SubLives();
-                if (enemyController.lives > 1)
+                TurnColorHurt();
+                if (enemyController.lives >= 1)
                 {
-                    SoundManager.instance.SoundEnemyHurt();
-                    TurnToRed();
+                    SoundManager.instance.SoundEnemyHurt();    
+                }
+                else
+                {
+                    SoundManager.instance.SoundEnemyDead();
                 }
             }
         }    
     }
 
-    public void TurnToRed()
+    public void TurnColorHurt()
     {
+        isDamage = true;
         if (transform.gameObject.CompareTag("Player"))
         {
             sp.color = Color.red;
         }
         else
         {
-            sp.color = Color.yellow;
+            sp.color = new Color(0.8f, 0.8f, 0.14f, 0.8f);
         }
 
         Invoke(nameof(TurnToWhite), 2f);
-
     }
 
     public void TurnToWhite()
     {
-        sp.color = Color.white;
+        isDamage = false;
+        if (transform.gameObject.CompareTag("Player"))
+        {
+            sp.color = Color.white;
+        }
+        else if (enemyController != null && enemyController.lives >= 1)
+        {
+            sp.color = Color.white;
+        }        
     }
-
 }

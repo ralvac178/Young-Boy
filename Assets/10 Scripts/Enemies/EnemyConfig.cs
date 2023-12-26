@@ -7,7 +7,9 @@ using UnityEngine;
 public class EnemyConfig : ScriptableObject
 {
     public string type;
-    //public int force;
+    public bool hasAllPowerUps;
+    public GameObject[] fullPowerUps;
+    public GameObject dectivateTrapPowerUp;
     public int lives;
     public float speed;
 }

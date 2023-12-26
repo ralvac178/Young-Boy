@@ -24,6 +24,7 @@ public class CollisionListener : MonoBehaviour
         else if (collision.gameObject.tag.Equals("CollectableArrows"))
         {
             CollisionProvider.OnArrowsCollision();
+            SoundManager.instance.SoundPlayerGotArrowsNLives();
             collision.gameObject.SetActive(false);
         }
         else if (collision.gameObject.tag.Equals("Key"))
@@ -48,12 +49,18 @@ public class CollisionListener : MonoBehaviour
         else if (collision.gameObject.tag.Equals("DJGem"))
         {
             CollisionProvider.OnDoubleJumpPowerUpCollision();
+            SoundManager.instance.SoundPlayerGotArrowsNLives();
+            collision.gameObject.SetActive(false);
+        }
+        else if (collision.gameObject.tag.Equals("Heart"))
+        {
+            SoundManager.instance.SoundPlayerGotArrowsNLives();
             collision.gameObject.SetActive(false);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("Pusher"))
+        if (collision.gameObject.tag.Equals("Pusher")) // Change for disabling lighting trap
         {
             collision.gameObject.transform.GetComponent<Animator>().SetTrigger("Pressed");
             collision.gameObject.layer = LayerMask.NameToLayer("Floor");
@@ -63,10 +70,25 @@ public class CollisionListener : MonoBehaviour
         {
             if (PlayerController.isPunching)
             {
-                if (collision.gameObject.GetComponent<EnemyController>().isAlive)
+                EnemyController ec = collision.gameObject.GetComponent<EnemyController>();
+                DragonController dc = collision.gameObject.GetComponent<DragonController>();
+
+                if(ec != null)
                 {
-                    collision.gameObject.transform.GetComponent<HasDamage>().OnHasDamage();
-                }                
+                    if (collision.gameObject.GetComponent<EnemyController>().isAlive
+                    && !collision.gameObject.GetComponent<HasDamage>().isDamage)
+                    {
+                        collision.gameObject.transform.GetComponent<HasDamage>().OnHasDamage();
+                    }
+                }
+                else if (dc != null)
+                {
+                    if (true // Repeat the shame thing of enemycontroller
+                    && !collision.gameObject.GetComponent<HasDamage>().isDamage)
+                    {
+                        collision.gameObject.transform.GetComponent<HasDamage>().OnHasDamage();
+                    }
+                }                            
             }
         }
         else if (collision.gameObject.tag.Equals("Traps"))

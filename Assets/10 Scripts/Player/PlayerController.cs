@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
     {
         hasTouchGroundScript = transform.GetComponent<HasTouchGround>();
         rb = GetComponent<Rigidbody2D>();
-        //hasGetCoin = GetComponent<HasGetCoin>();
     }
 
     private void OnEnable()
@@ -147,11 +146,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("PlayerHurt")
-                && !(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
-                {
-                    playerAnimations.PunchAnimation();
-                }              
+                playerAnimations.PunchAnimation();
             }
         };
         CollisionProvider.trapCollision -= hasDamage.OnHasDamage;

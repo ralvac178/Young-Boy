@@ -133,8 +133,22 @@ public class SoundManager : MonoBehaviour
         audioSourceList[10].Play();
     }
 
+    // Get Key
     public void SoundPlayerGotKey()
     {
         audioSourceList[11].Play();
+    }
+
+    // Get Arrows and lives
+
+    public void SoundPlayerGotArrowsNLives()
+    {
+        audioSourceList[12].Play();
+    }
+
+    // Enemy dead Sound
+    public void SoundEnemyDead()
+    {
+        audioSourceList[13].Play();
     }
 }

@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: EnemyConfigLongWay
   m_EditorClassIdentifier: 
   type: Barzag
+  hasAllPowerUps: 1
+  fullPowerUps:
+  - {fileID: 4478453252376891382, guid: 423c4bb9a9d7b3b4fa6ab0920b28197f, type: 3}
+  - {fileID: 4746983490462044639, guid: 7fa0abbf4845ed5459a9c526230afee3, type: 3}
+  - {fileID: 5472792269011632892, guid: 6d0aefca6d916364993d518745a37a77, type: 3}
+  dectivateTrapPowerUp: {fileID: 0}
   lives: 5
   speed: 540

@@ -11,6 +11,7 @@ public class MoveBackGroundGUI : MonoBehaviour
     void Start()
     {
         material = GetComponent<Image>().material;
+        material.mainTextureOffset = new Vector2(0, 0);
     }
 
     // Update is called once per frame

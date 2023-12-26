@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: EnemyConfigShaman
   m_EditorClassIdentifier: 
   type: Shaman
-  lives: 5
+  hasAllPowerUps: 1
+  fullPowerUps:
+  - {fileID: 5472792269011632892, guid: 6d0aefca6d916364993d518745a37a77, type: 3}
+  - {fileID: 4478453252376891382, guid: 423c4bb9a9d7b3b4fa6ab0920b28197f, type: 3}
+  dectivateTrapPowerUp: {fileID: 0}
+  lives: 3
   speed: 360

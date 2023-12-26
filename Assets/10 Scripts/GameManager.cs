@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private int coins = 0;
+    private int totalCoins;
     private int lives = 5;
     private int arrows = 0;
     public int keys;
     private int level = 1;
     public static GameManager instance;
+    public bool gameOver = false;
 
     [SerializeField] private TextMeshProUGUI levelTextGUI, coinsTextGUI, arrowsTextGUI;
     [SerializeField] private Image livesImage, redKey, yellowKey, blueKey;
@@ -161,5 +163,17 @@ public class GameManager : MonoBehaviour
     {
         EnableGotItem(arrowMode);
         DisableItem(punchMode);
+    }
+
+    public int GetLives()
+    {
+        return lives;
+    }
+
+    public void RestartItems()
+    {
+        arrows = 0;
+        coins = 0;
+        PlayerController.canDoubleJump = false;
     }
 }

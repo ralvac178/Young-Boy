@@ -8,11 +8,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private HasMove hasMoveScript;
     public bool isAlive = true;
     public float speed;
-    [HideInInspector] public int lives; 
-
+    [HideInInspector] public int lives;
+    private GameObject powerUp;
     private HasTouchGround hasTouchGroundScript;
     private HasDetectEdges hasDetectEdgesScript;
     private HasDetectObstacle hasDetectObstaclesScript;
+    private HasDamage hasDamage;
     private SpriteRenderer sr;
     private CapsuleCollider2D capsuleCollider;
     public bool enableMovement = true;
@@ -20,18 +21,31 @@ public class EnemyController : MonoBehaviour
 
     private CharacterAnimations characterAnimations;
     private Rigidbody2D rb;
+    private LaunchPowerUp launchPowerUp;
     // Start is called before the first frame update
     void Start()
     {
+        if (enemyConfig.hasAllPowerUps)
+        {
+            int random = Random.Range(0, enemyConfig.fullPowerUps.Length);
+            powerUp = enemyConfig.fullPowerUps[random];
+        }
+        else
+        {
+            powerUp = enemyConfig.dectivateTrapPowerUp;
+        }
+
         lives = enemyConfig.lives;
         speed = enemyConfig.speed;
         sr = GetComponent<SpriteRenderer>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         hasTouchGroundScript = GetComponent<HasTouchGround>();
+        hasDamage = GetComponent<HasDamage>();
         hasDetectEdgesScript = GetComponent<HasDetectEdges>();
         hasDetectObstaclesScript = GetComponent<HasDetectObstacle>();
         characterAnimations = GetComponent<CharacterAnimations>();
         rb = GetComponent<Rigidbody2D>();
+        launchPowerUp = GetComponent<LaunchPowerUp>();
         StartCoroutine(nameof(LookAt));
     }
 
@@ -39,9 +53,13 @@ public class EnemyController : MonoBehaviour
     {
         if (lives <= 0) return;
 
+        //if ((hasDetectObstaclesScript.playerOnLeft || hasDetectObstaclesScript.playerOnRight)
+        //    && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Enemy_hurt") &&
+        //    !(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
+
         if ((hasDetectObstaclesScript.playerOnLeft || hasDetectObstaclesScript.playerOnRight)
-            && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Enemy_hurt") &&
-            !(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
+             && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Enemy_hurt") &&
+             !(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
         {
             speed = 0;
             characterAnimations.WalkAnimation(false);
@@ -140,7 +158,6 @@ public class EnemyController : MonoBehaviour
 
     public void SubLives()
     {
-        Debug.Log(lives);
         if (lives > 0)
         {
             lives--;
@@ -156,6 +173,7 @@ public class EnemyController : MonoBehaviour
 
     public void DeleteEnemy()
     {
+        launchPowerUp.Launch(powerUp, transform.position);
         Destroy(this.gameObject);
     }
 
@@ -163,6 +181,6 @@ public class EnemyController : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Static;
         capsuleCollider.isTrigger = true;
-        sr.color = new Color(1, 1, 1, 0.36f);
+        sr.color = new Color(0.8f, 0.8f, 0.14f, 0.36f);
     }
 }

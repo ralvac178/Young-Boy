@@ -20,6 +20,7 @@ public class LoadingScreen : MonoBehaviour
         }
         else
         {
+            GameManager.instance.RestartItems();
             levelToGo = GameManager.instance.GetLevel();
         }
 

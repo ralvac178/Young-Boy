@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 5078245681352413441}
   - component: {fileID: 4279853030913975372}
   - component: {fileID: 6826973484942946459}
+  - component: {fileID: -8102435082983873441}
   m_Layer: 8
   m_Name: Shaman
   m_TagString: Enemy
@@ -432,3 +433,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8102435082983873441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704107506762925518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59678b6fdbbe3645a7c66f9b42a6635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
