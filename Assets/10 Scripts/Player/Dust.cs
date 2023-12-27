@@ -11,7 +11,7 @@ public class Dust : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void PlayDust()
+    public void PlayerDust()
     {
         if (!(animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1))
         {
@@ -27,5 +27,13 @@ public class Dust : MonoBehaviour
                 animator.SetTrigger("IsOnAir");
             }
         }      
+    }
+
+    public void EnemyDust()
+    {
+        if (!(animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1))
+        {
+            animator.SetTrigger("isWalking");
+        }
     }
 }

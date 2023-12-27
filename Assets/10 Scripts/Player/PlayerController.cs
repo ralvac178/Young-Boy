@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour
             {                
                 if (rb.velocity.magnitude > 0.5f)
                 {
-                    dust.PlayDust();
+                    dust.PlayerDust();
                     for (int i = 0; i < CamaraMain.parallax.Length; i++)
                     {
                         if (CamaraMain.parallax[i] != null)
@@ -207,7 +207,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (rb.velocity.magnitude > 0.5f)
                 {
-                    dust.PlayDust();
+                    dust.PlayerDust();
                     for (int i = 0; i < CamaraMain.parallax.Length; i++)
                     {
                         CamaraMain.parallax[i].MoveBackgroundLeft();

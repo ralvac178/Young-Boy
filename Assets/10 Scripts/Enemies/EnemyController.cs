@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
     private CharacterAnimations characterAnimations;
     private Rigidbody2D rb;
     private Launcher launcher;
+    private Dust dust;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +48,7 @@ public class EnemyController : MonoBehaviour
         characterAnimations = GetComponent<CharacterAnimations>();
         rb = GetComponent<Rigidbody2D>();
         launcher = GetComponent<Launcher>();
+        dust = GetComponentInChildren<Dust>();
         StartCoroutine(nameof(LookAt));
     }
 
@@ -78,7 +80,7 @@ public class EnemyController : MonoBehaviour
             if (hasDetectEdgesScript.isOnLeftEdge || hasDetectObstaclesScript.wallOnLeft)
             {
                 direction = Vector2.right;
-                sr.flipX = false;
+                transform.localScale = Vector3.one;
                 speed = 0;
                 characterAnimations.WalkAnimation(false);
                 yield return new WaitForSeconds(3f);
@@ -89,7 +91,7 @@ public class EnemyController : MonoBehaviour
             else if (hasDetectEdgesScript.isOnRightEdge || hasDetectObstaclesScript.wallOnRight)
             {
                 direction = Vector2.left;
-                sr.flipX = true;
+                transform.localScale = new Vector3(-1, 1, 1);
                 speed = 0;
                 characterAnimations.WalkAnimation(false);
                 yield return new WaitForSeconds(3f);
@@ -101,6 +103,7 @@ public class EnemyController : MonoBehaviour
             {
                 speed = enemyConfig.speed;
                 characterAnimations.WalkAnimation(true);
+                dust.EnemyDust();
             }   
             
             ////////////////////////////// Speed Regulator
@@ -173,7 +176,8 @@ public class EnemyController : MonoBehaviour
     {
         launcher.Launch(explosion, transform.position);
         launcher.Launch(powerUp, transform.position);
-        Destroy(this.gameObject);
+        SoundManager.instance.SoundEnemyDissapear();
+        gameObject.SetActive(false);
     }
 
     public void MakeTransparent()

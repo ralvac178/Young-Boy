@@ -151,4 +151,9 @@ public class SoundManager : MonoBehaviour
     {
         audioSourceList[13].Play();
     }
+
+    public void SoundEnemyDissapear()
+    {
+        audioSourceList[14].Play();
+    }
 }
