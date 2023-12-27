@@ -19,5 +19,6 @@ MonoBehaviour:
   - {fileID: 4746983490462044639, guid: 7fa0abbf4845ed5459a9c526230afee3, type: 3}
   - {fileID: 5472792269011632892, guid: 6d0aefca6d916364993d518745a37a77, type: 3}
   dectivateTrapPowerUp: {fileID: 0}
+  explosion: {fileID: 2075445603239615268, guid: 83496d678b5d09a4f8d69028d2e096e9, type: 3}
   lives: 5
   speed: 540

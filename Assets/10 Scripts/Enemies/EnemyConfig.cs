@@ -10,6 +10,7 @@ public class EnemyConfig : ScriptableObject
     public bool hasAllPowerUps;
     public GameObject[] fullPowerUps;
     public GameObject dectivateTrapPowerUp;
+    public GameObject explosion;
     public int lives;
     public float speed;
 }

@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     public bool isAlive = true;
     public float speed;
     [HideInInspector] public int lives;
-    private GameObject powerUp;
+    private GameObject powerUp, explosion;
     private HasTouchGround hasTouchGroundScript;
     private HasDetectEdges hasDetectEdgesScript;
     private HasDetectObstacle hasDetectObstaclesScript;
@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
 
     private CharacterAnimations characterAnimations;
     private Rigidbody2D rb;
-    private LaunchPowerUp launchPowerUp;
+    private Launcher launcher;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour
 
         lives = enemyConfig.lives;
         speed = enemyConfig.speed;
+        explosion = enemyConfig.explosion;
         sr = GetComponent<SpriteRenderer>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         hasTouchGroundScript = GetComponent<HasTouchGround>();
@@ -45,17 +46,13 @@ public class EnemyController : MonoBehaviour
         hasDetectObstaclesScript = GetComponent<HasDetectObstacle>();
         characterAnimations = GetComponent<CharacterAnimations>();
         rb = GetComponent<Rigidbody2D>();
-        launchPowerUp = GetComponent<LaunchPowerUp>();
+        launcher = GetComponent<Launcher>();
         StartCoroutine(nameof(LookAt));
     }
 
     private void Update()
     {
         if (lives <= 0) return;
-
-        //if ((hasDetectObstaclesScript.playerOnLeft || hasDetectObstaclesScript.playerOnRight)
-        //    && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Enemy_hurt") &&
-        //    !(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f))
 
         if ((hasDetectObstaclesScript.playerOnLeft || hasDetectObstaclesScript.playerOnRight)
              && !GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("Enemy_hurt") &&
@@ -66,6 +63,7 @@ public class EnemyController : MonoBehaviour
             AttackAnimation();
         }
     }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -173,7 +171,8 @@ public class EnemyController : MonoBehaviour
 
     public void DeleteEnemy()
     {
-        launchPowerUp.Launch(powerUp, transform.position);
+        launcher.Launch(explosion, transform.position);
+        launcher.Launch(powerUp, transform.position);
         Destroy(this.gameObject);
     }
 

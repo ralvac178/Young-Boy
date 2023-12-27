@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     };
 
     private string attackType = "Punch";
+
+    private Dust dust;
     // Start is called before the first frame update
     void Awake()
     {
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        dust = GetComponentInChildren<Dust>();
         hasTouchGroundScript = transform.GetComponent<HasTouchGround>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -180,11 +183,13 @@ public class PlayerController : MonoBehaviour
         if (forceMovement != 0)
         {
             hasMove.OnHasMove(forceMovement, isOnGround || isOnCeil, speed);
-            playerAnimations.WalkAnimation(true);
+            playerAnimations.WalkAnimation(true);         
+
             if (forceMovement > 0)
-            {
+            {                
                 if (rb.velocity.magnitude > 0.5f)
                 {
+                    dust.PlayDust();
                     for (int i = 0; i < CamaraMain.parallax.Length; i++)
                     {
                         if (CamaraMain.parallax[i] != null)
@@ -194,13 +199,15 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                lookAt.flipX = false;
+                
+                transform.localScale = Vector3.one;
                 playerLookAt = true;
             }
             else
             {
                 if (rb.velocity.magnitude > 0.5f)
                 {
+                    dust.PlayDust();
                     for (int i = 0; i < CamaraMain.parallax.Length; i++)
                     {
                         CamaraMain.parallax[i].MoveBackgroundLeft();
@@ -208,7 +215,7 @@ public class PlayerController : MonoBehaviour
                 }
 
 
-                lookAt.flipX = true;
+                transform.localScale = new Vector3(-1, 1, 1);
                 playerLookAt = false;
             }
         }
