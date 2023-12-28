@@ -47,8 +47,8 @@ public class EnemyController : MonoBehaviour
         hasDetectObstaclesScript = GetComponent<HasDetectObstacle>();
         characterAnimations = GetComponent<CharacterAnimations>();
         rb = GetComponent<Rigidbody2D>();
-        launcher = GetComponent<Launcher>();
         dust = GetComponentInChildren<Dust>();
+        launcher = GetComponent<Launcher>();
         StartCoroutine(nameof(LookAt));
     }
 
@@ -103,7 +103,6 @@ public class EnemyController : MonoBehaviour
             {
                 speed = enemyConfig.speed;
                 characterAnimations.WalkAnimation(true);
-                dust.EnemyDust();
             }   
             
             ////////////////////////////// Speed Regulator
@@ -185,5 +184,10 @@ public class EnemyController : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
         capsuleCollider.isTrigger = true;
         sr.color = new Color(0.8f, 0.8f, 0.14f, 0.36f);
+    }
+
+    public void PlayDust()
+    {
+        dust.EnemyDust();
     }
 }

@@ -31,9 +31,9 @@ public class Dust : MonoBehaviour
 
     public void EnemyDust()
     {
-        if (!(animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1))
+        if (animator != null)
         {
-            animator.SetTrigger("isWalking");
+            animator.Play("dust_walk");
         }
     }
 }

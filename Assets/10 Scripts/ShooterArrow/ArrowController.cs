@@ -5,6 +5,11 @@ using UnityEngine;
 public class ArrowController : MonoBehaviour
 {
     [SerializeField] private float force;
+    private ArrowSound arrowSound;
+    private void Start()
+    {
+        arrowSound = transform.parent.GetComponent<ArrowSound>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -16,7 +21,13 @@ public class ArrowController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Floor"))
         {
-            Destroy(this.gameObject);
+            arrowSound.PlayArrowSound();
+            Dissapear();
         }
+    }
+
+    public void Dissapear()
+    {
+        Destroy(this.gameObject);
     }
 }
