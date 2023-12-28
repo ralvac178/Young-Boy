@@ -43,4 +43,9 @@ public class Animations : MonoBehaviour, IAnimations
     {
         animator.SetTrigger(deadState);
     }
+
+    public void ResetAnimation(Animator animator, string idleState)
+    {
+        animator.Play(idleState);
+    }
 }

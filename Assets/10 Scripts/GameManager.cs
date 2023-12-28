@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private int level = 1;
     public static GameManager instance;
     public bool gameOver = false;
+    private PlayerController playerController;
 
     [SerializeField] private TextMeshProUGUI levelTextGUI, coinsTextGUI, arrowsTextGUI;
     [SerializeField] private Image livesImage, redKey, yellowKey, blueKey;
@@ -38,13 +39,9 @@ public class GameManager : MonoBehaviour
     {
         UpdateLevelText();
         UpdateLives(lives);
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-  
-    }
 
     public void AddArrows()
     {
@@ -175,5 +172,15 @@ public class GameManager : MonoBehaviour
         arrows = 0;
         coins = 0;
         PlayerController.canDoubleJump = false;
+    }
+
+    public void ResetAllGame()
+    {
+        arrows = 0;
+        coins = 0;
+        lives = 5;
+        PlayerController.canDoubleJump = false;
+        playerController.ResetLayer();
+        playerController.ResetAnimator();
     }
 }

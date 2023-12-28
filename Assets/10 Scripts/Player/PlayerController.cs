@@ -175,8 +175,14 @@ public class PlayerController : MonoBehaviour
     {
         isOnGround = hasTouchGroundScript.isOnGround;
         isOnCeil = hasTouchGroundScript.isOnCeil;
-        forceMovement = inputManager.Player.HorMove.ReadValue<float>();
-
+        if (GameManager.instance.GetLives() > 0 )
+        {
+            forceMovement = inputManager.Player.HorMove.ReadValue<float>();
+        }
+        else
+        {
+            forceMovement = 0;
+        }
     }
 
     private void FixedUpdate()
@@ -225,5 +231,20 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimations.WalkAnimation(false);
         }
+    }
+
+    public void SetDeadAnimation()
+    {
+        playerAnimations.DeadAnimation();
+    }
+
+    public void ResetLayer()
+    {
+        gameObject.layer = 6;
+    }
+
+    public void ResetAnimator()
+    {
+        playerAnimations.ResetAnimator();
     }
 }

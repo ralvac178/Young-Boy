@@ -66,6 +66,7 @@ public class LoadingScreen : MonoBehaviour
                 // Permitir que la escena se active
                 yield return new WaitForSecondsRealtime(3);
                 asyncLoad.allowSceneActivation = true;
+                if(GameManager.instance != null) GameManager.instance.ResetAllGame();
             }
 
             yield return null;

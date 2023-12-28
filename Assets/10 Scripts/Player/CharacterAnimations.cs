@@ -46,4 +46,9 @@ public class CharacterAnimations : MonoBehaviour
     {
         animationsScript.DeadAnimation(animator, "Dead");
     }
+
+    public void ResetAnimator()
+    {
+        animationsScript.ResetAnimation(animator,"PlayerIdle");
+    }
 }

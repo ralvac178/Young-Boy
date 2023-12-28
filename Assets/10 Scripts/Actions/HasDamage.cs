@@ -6,11 +6,13 @@ public class HasDamage : MonoBehaviour
 {
     private CharacterAnimations animationsScript;
     private EnemyController enemyController;
+    private PlayerController playerController;
     private SpriteRenderer sp;
     [HideInInspector] public bool isDamage;
 
     private void Start()
     {
+        playerController = GetComponent<PlayerController>();
         enemyController = GetComponent<EnemyController>();
         sp = GetComponent<SpriteRenderer>();
         animationsScript = GetComponent<CharacterAnimations>();
@@ -28,7 +30,12 @@ public class HasDamage : MonoBehaviour
             if (GameManager.instance.GetLives() <= 0)
             {
                 GameManager.instance.gameOver = true;
-                // Enable GameOver Canvas                          
+                if (playerController != null)
+                {
+                    playerController.SetDeadAnimation();
+                    gameObject.layer = 8;
+                }
+                GameOverCanvasSingleton.instance.OpenGameOverCanvas();                  
             }
         }
         else
