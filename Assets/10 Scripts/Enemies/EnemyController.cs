@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     private HasTouchGround hasTouchGroundScript;
     private HasDetectEdges hasDetectEdgesScript;
     private HasDetectObstacle hasDetectObstaclesScript;
-    private HasDamage hasDamage;
+    private HasDamage playerHasDamage;
     private SpriteRenderer sr;
     private CapsuleCollider2D capsuleCollider;
     public bool enableMovement = true;
@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         hasTouchGroundScript = GetComponent<HasTouchGround>();
-        hasDamage = GetComponent<HasDamage>();
+        playerHasDamage = GameObject.Find("Player").GetComponent<HasDamage>();
         hasDetectEdgesScript = GetComponent<HasDetectEdges>();
         hasDetectObstaclesScript = GetComponent<HasDetectObstacle>();
         characterAnimations = GetComponent<CharacterAnimations>();
@@ -137,12 +137,18 @@ public class EnemyController : MonoBehaviour
             if (hasDetectObstaclesScript.playerOnLeft && direction == Vector2.left)
             {
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 120, ForceMode2D.Impulse);
-                collision.gameObject.GetComponent<HasDamage>().OnHasDamage();
+                if (!playerHasDamage.isDamage)
+                {
+                    playerHasDamage.OnHasDamage();
+                }               
             }
             else if (hasDetectObstaclesScript.playerOnRight && direction == Vector2.right)
             {
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 120, ForceMode2D.Impulse);
-                collision.gameObject.GetComponent<HasDamage>().OnHasDamage();
+                if (!playerHasDamage.isDamage)
+                {
+                    playerHasDamage.OnHasDamage();
+                }
             }
         }
 

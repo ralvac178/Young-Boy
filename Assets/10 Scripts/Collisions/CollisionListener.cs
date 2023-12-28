@@ -55,6 +55,7 @@ public class CollisionListener : MonoBehaviour
         else if (collision.gameObject.tag.Equals("Heart"))
         {
             SoundManager.instance.SoundPlayerGotArrowsNLives();
+            CollisionProvider.OnHeartCollision(3);
             collision.gameObject.SetActive(false);
         }
     }

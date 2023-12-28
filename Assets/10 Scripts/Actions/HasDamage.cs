@@ -18,7 +18,7 @@ public class HasDamage : MonoBehaviour
 
     public void OnHasDamage()
     {
-        
+        if (isDamage) return;
         animationsScript.HurtAnimation();
         if (transform.gameObject.CompareTag("Player"))
         {
@@ -61,7 +61,7 @@ public class HasDamage : MonoBehaviour
             sp.color = new Color(0.8f, 0.8f, 0.14f, 0.8f);
         }
 
-        Invoke(nameof(TurnToWhite), 2f);
+        Invoke(nameof(TurnToWhite), 1f);
     }
 
     public void TurnToWhite()

@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.doubleJumpPowerUpCollision += GameManager.instance.SetDoubleJumpGem;
         SceneManager.sceneLoaded += GetComponent<InitPosPlayer>().NewPosPlayer;
         CollisionProvider.keyCollision += GameManager.instance.SetKey;
+        CollisionProvider.heartCollision += GameManager.instance.AddLives;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
     }
 
@@ -162,6 +163,7 @@ public class PlayerController : MonoBehaviour
         CollisionProvider.doubleJumpPowerUpCollision -= hasjump.EnableDoubleJump;
         CollisionProvider.doubleJumpPowerUpCollision -= GameManager.instance.SetDoubleJumpGem;
         SceneManager.sceneLoaded -= GetComponent<InitPosPlayer>().NewPosPlayer;
+        CollisionProvider.heartCollision -= GameManager.instance.AddLives;
         //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
 
         inputManager.Disable();

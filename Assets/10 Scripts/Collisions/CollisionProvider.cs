@@ -22,6 +22,9 @@ public class CollisionProvider : MonoBehaviour
     public delegate void DoubleJumpPowerUpCollision();
     public static DoubleJumpPowerUpCollision doubleJumpPowerUpCollision;
 
+    public delegate void HeartCollision(int lives);
+    public static HeartCollision heartCollision;
+
     public delegate void TrampolineCollision(float force);
     public static TrampolineCollision trampolineCollision;
 
@@ -58,5 +61,10 @@ public class CollisionProvider : MonoBehaviour
     public static void OnDoubleJumpPowerUpCollision()
     {
         doubleJumpPowerUpCollision?.Invoke();
+    }
+
+    public static void OnHeartCollision(int lives)
+    {
+        heartCollision?.Invoke(lives);
     }
 }
