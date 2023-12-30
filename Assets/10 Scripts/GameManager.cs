@@ -202,6 +202,7 @@ public class GameManager : MonoBehaviour
                 playerController.SetDeadAnimation();
                 playerController.gameObject.layer = 8;
                 GameOverCanvasSingleton.instance.OpenGameOverCanvas();
+                SoundManager.instance.GameOverSound();
                 HasTouchGround.enableReturn = true;
             }
         }

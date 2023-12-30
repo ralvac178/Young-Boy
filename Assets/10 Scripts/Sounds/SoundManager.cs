@@ -156,4 +156,14 @@ public class SoundManager : MonoBehaviour
     {
         audioSourceList[14].Play();
     }
+
+    public void GameOverSound()
+    {
+        audioSourceList[15].Play();
+    }
+
+    public void BricksSound()
+    {
+        audioSourceList[16].Play();
+    }
 }

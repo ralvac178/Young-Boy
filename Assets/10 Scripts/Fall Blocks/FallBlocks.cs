@@ -37,6 +37,7 @@ public class FallBlocks : MonoBehaviour
             foreach (var animator in animatorArray)
             {
                 animator.SetTrigger("Breaking");
+                SoundManager.instance.BricksSound();
             }
 
             Destroy(collision.gameObject);

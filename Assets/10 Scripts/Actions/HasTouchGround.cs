@@ -34,7 +34,7 @@ public class HasTouchGround : MonoBehaviour
             {
                 isOnGround = true;
                 animator.SetBool("IsOnGround", true);
-                GameManager.instance.FinishGame(); // Ask if finish the game
+                Invoke(nameof(CallFinishGame), 0.5f); // Ask if finish the game
             }           
         }
         
@@ -44,7 +44,7 @@ public class HasTouchGround : MonoBehaviour
             {
                 isOnGround = true;
                 animator.SetBool("IsOnGround", true);
-                GameManager.instance.FinishGame(); // Ask if finish the game
+                Invoke(nameof(CallFinishGame), 0.5f); // Ask if finish the game
             }    
         }
         else
@@ -62,5 +62,10 @@ public class HasTouchGround : MonoBehaviour
             capsuleCollider.bounds.size, 0, Vector2.down, 0.02f, layerMask);
 
         return hit;
+    }
+
+    public void CallFinishGame()
+    {
+        GameManager.instance.FinishGame();
     }
 }
