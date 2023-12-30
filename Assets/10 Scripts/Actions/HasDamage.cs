@@ -29,13 +29,7 @@ public class HasDamage : MonoBehaviour
             SoundManager.instance.SoundPlayerHurt();
             if (GameManager.instance.GetLives() <= 0)
             {
-                GameManager.instance.gameOver = true;
-                if (playerController != null)
-                {
-                    playerController.SetDeadAnimation();
-                    gameObject.layer = 8;
-                }
-                GameOverCanvasSingleton.instance.OpenGameOverCanvas();                  
+                GameManager.instance.gameOver = true;               
             }
         }
         else
@@ -82,5 +76,10 @@ public class HasDamage : MonoBehaviour
         {
             sp.color = Color.white;
         }        
+    }
+
+    public void OnFinishGame()
+    {
+        GameManager.instance.FinishGame();
     }
 }

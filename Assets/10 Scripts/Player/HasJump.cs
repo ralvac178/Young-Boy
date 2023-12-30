@@ -21,4 +21,9 @@ public class HasJump : MonoBehaviour
     {
         PlayerController.canDoubleJump = true;
     }
+
+    public void SetDoubleJumpIcon()
+    {
+        GameManager.instance.SetDoubleJumpGem();
+    }
 }

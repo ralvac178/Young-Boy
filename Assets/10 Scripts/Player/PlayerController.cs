@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     private InputManager inputManager;
     [SerializeField] private HasMove hasMove;
     [SerializeField] private HasJump hasjump;
+    [SerializeField] private HasGetArrows hasGetArrows;
+    [SerializeField] private HasGetHeart hasGetHeart;
+    [SerializeField] private HasGetKey hasGetKey;
+    [SerializeField] private HasChangeAttackType hasChangeAttackType;
     [SerializeField] private CharacterAnimations playerAnimations;
 
     [SerializeField] private HasDamage hasDamage;
@@ -50,8 +54,10 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        DontDestroyOnLoad(this.gameObject);   
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }    
     }
 
     private void Start()
@@ -65,7 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name.Equals("Loading"))
         {
-            return;
+            //return;
         }
 
         inputManager.Enable();
@@ -78,15 +84,15 @@ public class PlayerController : MonoBehaviour
 
         inputManager.Player.ChangeAttack.performed += _ =>
         {
-            if (GameManager.instance.GetArrows() > 0 && attackType.Equals("Punch"))
+            if (GameManager.GetArrows() > 0 && attackType.Equals("Punch"))
             {
                 attackType = attackOptions[2];
-                GameManager.instance.EnableArrowAttackItem();
+                hasChangeAttackType.EnableArrowAttackItem();
             }
-            else if (GameManager.instance.GetArrows() > 0 && attackType.Equals("Arrow"))
+            else if (GameManager.GetArrows() > 0 && attackType.Equals("Arrow"))
             {
                 attackType = attackOptions[1];
-                GameManager.instance.EnablePunchAttackItem();
+                hasChangeAttackType.EnablePunchAttackItem();
             }
         };
 
@@ -96,10 +102,10 @@ public class PlayerController : MonoBehaviour
             {
                 playerAnimations.ShootAnimation();
                 GameManager.instance.SubArrows();
-                if (GameManager.instance.GetArrows() <= 0)
+                if (GameManager.GetArrows() <= 0)
                 {
                     attackType = attackOptions[1];
-                    GameManager.instance.EnablePunchAttackItem();
+                    hasChangeAttackType.EnablePunchAttackItem();
                 }
             }
             else
@@ -109,17 +115,17 @@ public class PlayerController : MonoBehaviour
         };
 
         CollisionProvider.trapCollision += hasDamage.OnHasDamage;
+        CollisionProvider.trapCollision += hasDamage.OnFinishGame;
         CollisionProvider.coinCollision += hasGetCoin.AddPoints;
-        CollisionProvider.trampolineCollision += upForceWithTrampoline.JumpTrampoline;
-        CollisionProvider.arrowsCollision += GameManager.instance.AddArrows;
+        CollisionProvider.arrowsCollision += hasGetArrows.AddArrows;
         CollisionProvider.lavaCollision += OnhasHurtJump;
         CollisionProvider.lavaCollision += hasDamage.OnHasDamage;
+        CollisionProvider.lavaCollision += hasDamage.OnFinishGame;
         CollisionProvider.doubleJumpPowerUpCollision += hasjump.EnableDoubleJump;
-        CollisionProvider.doubleJumpPowerUpCollision += GameManager.instance.SetDoubleJumpGem;
+        CollisionProvider.doubleJumpPowerUpCollision += hasjump.SetDoubleJumpIcon;
         SceneManager.sceneLoaded += GetComponent<InitPosPlayer>().NewPosPlayer;
-        CollisionProvider.keyCollision += GameManager.instance.SetKey;
-        CollisionProvider.heartCollision += GameManager.instance.AddLives;
-        //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
+        CollisionProvider.keyCollision += hasGetKey.AddKey;
+        CollisionProvider.heartCollision += hasGetHeart.AddLives;
     }
 
     private void OnhasHurtJump()
@@ -132,7 +138,7 @@ public class PlayerController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name.Equals("Loading"))
         {
-            return;
+            //return;
         }
 
         inputManager.Player.Jump.performed -= _ =>
@@ -141,12 +147,32 @@ public class PlayerController : MonoBehaviour
             playerAnimations.JumpAnimation();
         };
 
+        inputManager.Player.ChangeAttack.performed -= _ =>
+        {
+            // if Get Arrows > 0 && ... replaced by true for test
+            if (GameManager.GetArrows() > 0 && attackType.Equals("Punch"))
+            {
+                attackType = attackOptions[2];
+                hasChangeAttackType.EnableArrowAttackItem();
+            }
+            else if (GameManager.GetArrows() > 0 && attackType.Equals("Arrow"))
+            {
+                attackType = attackOptions[1];
+                hasChangeAttackType.EnablePunchAttackItem();
+            }
+        };
+
         inputManager.Player.Shoot.performed -= _ =>
         {
-            if (GameManager.instance.GetArrows() > 0)
+            if (GameManager.GetArrows() > 0)
             {
                 playerAnimations.ShootAnimation();
                 GameManager.instance.SubArrows();
+                if (GameManager.GetArrows() <= 0)
+                {
+                    attackType = attackOptions[1];
+                    hasChangeAttackType.EnablePunchAttackItem();
+                }
             }
             else
             {
@@ -154,17 +180,17 @@ public class PlayerController : MonoBehaviour
             }
         };
         CollisionProvider.trapCollision -= hasDamage.OnHasDamage;
+        CollisionProvider.trapCollision -= hasDamage.OnFinishGame;
         CollisionProvider.coinCollision -= hasGetCoin.AddPoints;
-        CollisionProvider.trampolineCollision -= upForceWithTrampoline.JumpTrampoline;
-        CollisionProvider.arrowsCollision -= GameManager.instance.AddArrows;
+        CollisionProvider.arrowsCollision -= hasGetArrows.AddArrows;
         CollisionProvider.lavaCollision -= OnhasHurtJump;
         CollisionProvider.lavaCollision -= hasDamage.OnHasDamage;
-        CollisionProvider.keyCollision -= GameManager.instance.SetKey;
+        CollisionProvider.lavaCollision -= hasDamage.OnFinishGame;
+        CollisionProvider.keyCollision -= hasGetKey.AddKey;
         CollisionProvider.doubleJumpPowerUpCollision -= hasjump.EnableDoubleJump;
-        CollisionProvider.doubleJumpPowerUpCollision -= GameManager.instance.SetDoubleJumpGem;
+        CollisionProvider.doubleJumpPowerUpCollision -= hasjump.SetDoubleJumpIcon;
         SceneManager.sceneLoaded -= GetComponent<InitPosPlayer>().NewPosPlayer;
-        CollisionProvider.heartCollision -= GameManager.instance.AddLives;
-        //inputManager.Player.HorMove.performed += _ => playerAnimations.JumpAnimation();
+        CollisionProvider.heartCollision -= hasGetHeart.AddLives;
 
         inputManager.Disable();
     }

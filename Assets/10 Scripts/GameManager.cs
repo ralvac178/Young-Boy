@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private int coins = 0;
     private int totalCoins;
     private int lives = 5;
-    private int arrows = 0;
+    private static int arrows = 0;
     public int keys;
     private int level = 1;
     public static GameManager instance;
@@ -23,16 +23,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (instance != null && instance != this)
+        // Asegura que solo exista una instancia
+        if (instance == null)
         {
-            Destroy(this);
+            instance = this;
+            DontDestroyOnLoad(gameObject); // Para que el objeto no se destruya al cargar nuevas escenas
         }
         else
         {
-            instance = this;
+            Destroy(gameObject); // Destruye el objeto duplicado
         }
-
-        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateLives(int lives)
     {
-        livesImage.GetComponent<RectTransform>().sizeDelta = new Vector2(48*lives,50);
+        livesImage.GetComponent<RectTransform>().sizeDelta = new Vector2(48 * lives, 50);
     }
 
     public void UpdateCoins(int coins)
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         arrowsTextGUI.text = $"{arrows}";
     }
 
-    public int GetArrows()
+    public static int GetArrows()
     {
         return arrows;
     }
@@ -140,6 +140,11 @@ public class GameManager : MonoBehaviour
         return level;
     }
 
+    public void SetLevel()
+    {
+        level = 1;
+    }
+
     public void SetDoubleJumpGem()
     {
         EnableGotItem(dJGem);
@@ -167,11 +172,10 @@ public class GameManager : MonoBehaviour
         return lives;
     }
 
-    public void RestartItems()
+    public void RestartCoins()
     {
-        arrows = 0;
         coins = 0;
-        PlayerController.canDoubleJump = false;
+        UpdateCoins(coins);
     }
 
     public void ResetAllGame()
@@ -179,8 +183,27 @@ public class GameManager : MonoBehaviour
         arrows = 0;
         coins = 0;
         lives = 5;
+        UpdateLives(lives);
+        UpdateCoins(coins);
+        UpdateArrows();
+        gameOver = false;
+        HasTouchGround.enableReturn = false;
         PlayerController.canDoubleJump = false;
         playerController.ResetLayer();
         playerController.ResetAnimator();
+    }
+
+    public void FinishGame()
+    {
+        if (gameOver)
+        {
+            if (playerController != null)
+            {
+                playerController.SetDeadAnimation();
+                playerController.gameObject.layer = 8;
+                GameOverCanvasSingleton.instance.OpenGameOverCanvas();
+                HasTouchGround.enableReturn = true;
+            }
+        }
     }
 }

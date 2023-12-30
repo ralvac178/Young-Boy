@@ -11,7 +11,7 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private Image loadBar;
     private int levelToGo;
-
+    public static bool retry = false;
     private void Start()
     {
         if (GameManager.instance == null)
@@ -20,8 +20,16 @@ public class LoadingScreen : MonoBehaviour
         }
         else
         {
-            GameManager.instance.RestartItems();
-            levelToGo = GameManager.instance.GetLevel();
+            GameManager.instance.RestartCoins();
+            if (retry)
+            {
+                GameManager.instance.SetLevel();
+                levelToGo = 1;
+            }
+            else
+            {
+                levelToGo = GameManager.instance.GetLevel();
+            }           
         }
 
         StartCoroutine(nameof(LoadingPoints));
@@ -65,8 +73,13 @@ public class LoadingScreen : MonoBehaviour
             {
                 // Permitir que la escena se active
                 yield return new WaitForSecondsRealtime(3);
-                asyncLoad.allowSceneActivation = true;
-                if(GameManager.instance != null) GameManager.instance.ResetAllGame();
+                if (retry)
+                {
+                    if (GameManager.instance != null) GameManager.instance.ResetAllGame();
+                    retry = false;
+                }
+                //
+                asyncLoad.allowSceneActivation = true;              
             }
 
             yield return null;

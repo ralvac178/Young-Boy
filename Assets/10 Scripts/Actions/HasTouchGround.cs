@@ -9,14 +9,22 @@ public class HasTouchGround : MonoBehaviour
 
     private CapsuleCollider2D capsuleCollider;
     public bool isOnGround, isOnCeil;
+    private PlayerController playerController;
+    public static bool enableReturn = false;
 
     private void Start()
     {
+        playerController = GetComponent<PlayerController>();
         capsuleCollider = transform.GetComponent<CapsuleCollider2D>();
     }
     // Update is called once per frame
     void Update()
     {
+        if (enableReturn)
+        {
+            return;
+        }
+
         RaycastHit2D hitFloor = LookHit(layerMaskFloor);
         RaycastHit2D hitCeil = LookHit(layerMaskCeil);
 
@@ -26,6 +34,7 @@ public class HasTouchGround : MonoBehaviour
             {
                 isOnGround = true;
                 animator.SetBool("IsOnGround", true);
+                GameManager.instance.FinishGame(); // Ask if finish the game
             }           
         }
         
@@ -35,6 +44,7 @@ public class HasTouchGround : MonoBehaviour
             {
                 isOnGround = true;
                 animator.SetBool("IsOnGround", true);
+                GameManager.instance.FinishGame(); // Ask if finish the game
             }    
         }
         else

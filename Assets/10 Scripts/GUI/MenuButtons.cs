@@ -18,6 +18,7 @@ public class MenuButtons : MonoBehaviour, IPointerEnterHandler
     {
         if (gameObject.name.Equals("RetryButton"))
         {
+            LoadingScreen.retry = true;
             GameOverCanvasSingleton.instance.GameOverCanvasDeactive();
         }
         SceneManager.LoadScene("Loading");
