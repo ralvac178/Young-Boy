@@ -18,4 +18,9 @@ public class OpenChest : MonoBehaviour
             animator.SetTrigger("Open");
         }       
     }
+
+    public void Sound()
+    {
+        SoundManager.instance.OpenSafeSound();
+    }
 }

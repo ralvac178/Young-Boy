@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameOverCanvasSingleton : MonoBehaviour
 {
     public static GameOverCanvasSingleton instance;
+    [SerializeField] private TextMeshProUGUI buttonText;
+    [SerializeField] private Text title;
+    [SerializeField] private GridLayoutGroup gridLayoutGroup;
 
     private void Awake()
     {
@@ -34,5 +39,26 @@ public class GameOverCanvasSingleton : MonoBehaviour
     public void GameOverCanvasDeactive()
     {
         gameObject.SetActive(false);
+    }
+
+    public void ChangeToMissionComplete()
+    {
+        title.text = "MISSION COMPLETE!";
+        if (GameManager.instance.GetLevel() != 3)
+        {
+            buttonText.text = "CONTINUE";
+        }
+        else
+        {
+            buttonText.text = "RETRY";
+        }        
+        gridLayoutGroup.cellSize = new Vector2(164, 50);
+    }
+
+    public void RestoreToGameOver()
+    {
+        title.text = "GAME OVER";
+        buttonText.text = "RETRY";
+        gridLayoutGroup.cellSize = new Vector2(142, 50);
     }
 }

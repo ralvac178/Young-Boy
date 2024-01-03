@@ -166,4 +166,9 @@ public class SoundManager : MonoBehaviour
     {
         audioSourceList[16].Play();
     }
+
+    public void OpenSafeSound()
+    {
+        audioSourceList[17].Play();
+    }
 }

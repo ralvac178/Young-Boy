@@ -10,6 +10,7 @@ public class LoadingScreen : MonoBehaviour
     private string message = "Loading";
     [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private Image loadBar;
+    [SerializeField] private TextMeshProUGUI title;
     private int levelToGo;
     public static bool retry = false;
     private void Start()
@@ -20,7 +21,7 @@ public class LoadingScreen : MonoBehaviour
         }
         else
         {
-            GameManager.instance.RestartCoins();
+            GameManager.instance.RestartCoinsAndAttackOptions();
             if (retry)
             {
                 GameManager.instance.SetLevel();
@@ -32,6 +33,7 @@ public class LoadingScreen : MonoBehaviour
             }           
         }
 
+        title.text = $"CHAPTER {levelToGo}";
         StartCoroutine(nameof(LoadingPoints));
         StartCoroutine(nameof(LoadingAsycScene));
     }

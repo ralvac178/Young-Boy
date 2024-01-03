@@ -172,10 +172,11 @@ public class GameManager : MonoBehaviour
         return lives;
     }
 
-    public void RestartCoins()
+    public void RestartCoinsAndAttackOptions()
     {
         coins = 0;
         UpdateCoins(coins);
+        playerController.RestartAttackOptions();
     }
 
     public void ResetAllGame()
@@ -189,6 +190,7 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         HasTouchGround.enableReturn = false;
         PlayerController.canDoubleJump = false;
+        playerController.RestartAttackOptions();
         playerController.ResetLayer();
         playerController.ResetAnimator();
     }

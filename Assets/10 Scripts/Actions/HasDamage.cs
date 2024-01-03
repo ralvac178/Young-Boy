@@ -29,7 +29,8 @@ public class HasDamage : MonoBehaviour
             SoundManager.instance.SoundPlayerHurt();
             if (GameManager.instance.GetLives() <= 0)
             {
-                GameManager.instance.gameOver = true;               
+                GameManager.instance.gameOver = true;
+                GameOverCanvasSingleton.instance.RestoreToGameOver();
             }
         }
         else

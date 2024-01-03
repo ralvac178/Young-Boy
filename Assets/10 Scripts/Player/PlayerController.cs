@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private HasTouchGround hasTouchGroundScript;
     public static bool isOnGround, isOnCeil;
     [SerializeField] private float speed;
+    private float initSpeed;
     private float forceMovement;
 
     [HideInInspector] public static bool playerLookAt = true;
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour
         dust = GetComponentInChildren<Dust>();
         hasTouchGroundScript = transform.GetComponent<HasTouchGround>();
         rb = GetComponent<Rigidbody2D>();
+        initSpeed = speed;
     }
 
     private void OnEnable()
@@ -113,6 +115,9 @@ public class PlayerController : MonoBehaviour
                 playerAnimations.PunchAnimation();
             }
         };
+
+        inputManager.Player.Run.started += EnhanceSpeed;
+        inputManager.Player.Run.canceled += RestartSpeed;
 
         CollisionProvider.trapCollision += hasDamage.OnHasDamage;
         CollisionProvider.trapCollision += hasDamage.OnFinishGame;
@@ -179,6 +184,10 @@ public class PlayerController : MonoBehaviour
                 playerAnimations.PunchAnimation();
             }
         };
+
+        inputManager.Player.Run.started -= EnhanceSpeed;
+        inputManager.Player.Run.canceled -= RestartSpeed;
+
         CollisionProvider.trapCollision -= hasDamage.OnHasDamage;
         CollisionProvider.trapCollision -= hasDamage.OnFinishGame;
         CollisionProvider.coinCollision -= hasGetCoin.AddPoints;
@@ -272,5 +281,21 @@ public class PlayerController : MonoBehaviour
     public void ResetAnimator()
     {
         playerAnimations.ResetAnimator();
+    }
+
+    public void EnhanceSpeed(InputAction.CallbackContext context)
+    {
+        speed = initSpeed * 1.45f;
+    }
+
+    public void RestartSpeed(InputAction.CallbackContext context)
+    {
+        speed = initSpeed;
+    }
+
+    public void RestartAttackOptions()
+    {
+        attackType = attackOptions[1];
+        hasChangeAttackType.EnablePunchAttackItem();
     }
 }

@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuButtons : MonoBehaviour, IPointerEnterHandler
 {
-    [SerializeField] private UnityEvent onHighlighedEvent; 
+    [SerializeField] private UnityEvent onHighlighedEvent;
+    [SerializeField] private TextMeshProUGUI text;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -18,7 +20,10 @@ public class MenuButtons : MonoBehaviour, IPointerEnterHandler
     {
         if (gameObject.name.Equals("RetryButton"))
         {
-            LoadingScreen.retry = true;
+            if (text.text.Equals("RETRY"))
+            {
+                LoadingScreen.retry = true;
+            }
             GameOverCanvasSingleton.instance.GameOverCanvasDeactive();
         }
         SceneManager.LoadScene("Loading");

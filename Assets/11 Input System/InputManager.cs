@@ -62,6 +62,15 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""0daaacdf-4559-4576-8aa6-432f3968407e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,6 +139,28 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2919c77b-e901-41ed-bfb9-b0c94c2517b2"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Key"",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0f5d732-d27b-4e51-88b9-2443f4fcdb4e"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""Key"",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -154,6 +185,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         m_Player_HorMove = m_Player.FindAction("HorMove", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_ChangeAttack = m_Player.FindAction("ChangeAttack", throwIfNotFound: true);
+        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -219,6 +251,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_HorMove;
     private readonly InputAction m_Player_Shoot;
     private readonly InputAction m_Player_ChangeAttack;
+    private readonly InputAction m_Player_Run;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -227,6 +260,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         public InputAction @HorMove => m_Wrapper.m_Player_HorMove;
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @ChangeAttack => m_Wrapper.m_Player_ChangeAttack;
+        public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -248,6 +282,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
             @ChangeAttack.started += instance.OnChangeAttack;
             @ChangeAttack.performed += instance.OnChangeAttack;
             @ChangeAttack.canceled += instance.OnChangeAttack;
+            @Run.started += instance.OnRun;
+            @Run.performed += instance.OnRun;
+            @Run.canceled += instance.OnRun;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -264,6 +301,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
             @ChangeAttack.started -= instance.OnChangeAttack;
             @ChangeAttack.performed -= instance.OnChangeAttack;
             @ChangeAttack.canceled -= instance.OnChangeAttack;
+            @Run.started -= instance.OnRun;
+            @Run.performed -= instance.OnRun;
+            @Run.canceled -= instance.OnRun;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -296,5 +336,6 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         void OnHorMove(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnChangeAttack(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
 }
