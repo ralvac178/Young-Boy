@@ -178,7 +178,7 @@ MonoBehaviour:
   wallOnLeft: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 72
 --- !u!114 &4861912265118769379
 MonoBehaviour:
   m_ObjectHideFlags: 0

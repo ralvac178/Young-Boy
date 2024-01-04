@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name.Equals("Loading"))
         {
-            //return;
+            return;
         }
 
         inputManager.Player.Jump.performed -= _ =>
@@ -210,7 +210,7 @@ public class PlayerController : MonoBehaviour
     {
         isOnGround = hasTouchGroundScript.isOnGround;
         isOnCeil = hasTouchGroundScript.isOnCeil;
-        if (GameManager.instance.GetLives() > 0 )
+        if (GameManager.instance.GetLives() > 0  && !GameManager.instance.stopPlayer)
         {
             forceMovement = inputManager.Player.HorMove.ReadValue<float>();
         }
@@ -286,11 +286,13 @@ public class PlayerController : MonoBehaviour
     public void EnhanceSpeed(InputAction.CallbackContext context)
     {
         speed = initSpeed * 1.45f;
+        playerAnimations.RunAnimationEnabled();
     }
 
     public void RestartSpeed(InputAction.CallbackContext context)
     {
         speed = initSpeed;
+        playerAnimations.RunAnimationDisabled();
     }
 
     public void RestartAttackOptions()

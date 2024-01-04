@@ -20,8 +20,8 @@ public class HasDetectObstacle : MonoBehaviour
         dragonController = GetComponent<DragonController>();
         enemyController = GetComponent<EnemyController>();
 
-        normalSize = capsuleCollider2D.bounds.size/3;
-        origin = new Vector2(capsuleCollider2D.bounds.center.x, capsuleCollider2D.bounds.center.y);
+        normalSize = capsuleCollider2D.bounds.size/2.5f;
+        //origin = new Vector2(capsuleCollider2D.bounds.center.x, -capsuleCollider2D.bounds.center.y/2.5f);
     }
 
     // Update is called once per frame
@@ -31,11 +31,11 @@ public class HasDetectObstacle : MonoBehaviour
         {
             if (transform.name.Contains("Shaman"))
             {
-                DetectPlayer(enemyController.direction, 0.28f);
+                DetectPlayer(enemyController.direction, 0.24f);
             }
             else if (transform.name.Contains("Barzag"))
             {
-                DetectPlayer(enemyController.direction, 0.28f);
+                DetectPlayer(enemyController.direction, 0.34f);
             }
         }
         else if (dragonController != null)

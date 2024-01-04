@@ -171,4 +171,9 @@ public class SoundManager : MonoBehaviour
     {
         audioSourceList[17].Play();
     }
+
+    public void FireworksSound()
+    {
+        audioSourceList[18].Play();
+    }
 }

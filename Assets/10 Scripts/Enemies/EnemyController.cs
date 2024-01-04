@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
                 transform.localScale = Vector3.one;
                 speed = 0;
                 characterAnimations.WalkAnimation(false);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2.8f);
                 speed = enemyConfig.speed;             
                 characterAnimations.WalkAnimation(true);
                 yield return new WaitForSeconds(1.5f);
@@ -94,7 +94,7 @@ public class EnemyController : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
                 speed = 0;
                 characterAnimations.WalkAnimation(false);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2.8f);
                 speed = enemyConfig.speed;
                 characterAnimations.WalkAnimation(true);
                 yield return new WaitForSeconds(1.5f);

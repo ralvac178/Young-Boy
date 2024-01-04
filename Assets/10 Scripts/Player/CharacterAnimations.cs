@@ -51,4 +51,14 @@ public class CharacterAnimations : MonoBehaviour
     {
         animationsScript.ResetAnimation(animator,"PlayerIdle");
     }
+
+    public void RunAnimationEnabled()
+    {
+        animationsScript.RunAnimationTrue(animator, "IsRunning");
+    }
+
+    public void RunAnimationDisabled()
+    {
+        animationsScript.RunAnimationFalse(animator, "IsRunning");
+    }
 }

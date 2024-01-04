@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool gameOver = false;
     private PlayerController playerController;
+    public bool stopPlayer = false;
 
     [SerializeField] private TextMeshProUGUI levelTextGUI, coinsTextGUI, arrowsTextGUI;
     [SerializeField] private Image livesImage, redKey, yellowKey, blueKey;
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         level++;
-        UpdateLevelText();
+        //UpdateLevelText();
     }
 
     public void SetKey(string color)
@@ -175,7 +176,9 @@ public class GameManager : MonoBehaviour
     public void RestartCoinsAndAttackOptions()
     {
         coins = 0;
+        arrows = 0;
         UpdateCoins(coins);
+        UpdateArrows();
         playerController.RestartAttackOptions();
     }
 
@@ -187,6 +190,7 @@ public class GameManager : MonoBehaviour
         UpdateLives(lives);
         UpdateCoins(coins);
         UpdateArrows();
+        UpdateLevelText();
         gameOver = false;
         HasTouchGround.enableReturn = false;
         PlayerController.canDoubleJump = false;

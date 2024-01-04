@@ -48,4 +48,14 @@ public class Animations : MonoBehaviour, IAnimations
     {
         animator.Play(idleState);
     }
+
+    public void RunAnimationTrue(Animator animator, string runState)
+    {
+        animator.SetBool(runState, true);
+    }
+
+    public void RunAnimationFalse(Animator animator, string runState)
+    {
+        animator.SetBool(runState, false);
+    }
 }
