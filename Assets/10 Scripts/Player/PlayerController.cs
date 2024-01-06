@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +21,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private HasDamage hasDamage;
     [SerializeField] private HasGetCoin hasGetCoin;
     [SerializeField] private SpriteRenderer lookAt;
-    [SerializeField] private UpForceWithTrampoline upForceWithTrampoline;
 
     private HasTouchGround hasTouchGroundScript;
     public static bool isOnGround, isOnCeil;
@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
     private string attackType = "Punch";
 
     private Dust dust;
+
+    [SerializeField] private UnityEvent onPause;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -73,7 +76,7 @@ public class PlayerController : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name.Equals("Loading"))
         {
-            //return;
+            return;
         }
 
         inputManager.Enable();
@@ -113,6 +116,16 @@ public class PlayerController : MonoBehaviour
             else
             {
                 playerAnimations.PunchAnimation();
+            }
+        };
+
+        inputManager.PauseManager.Pause.performed += _ =>
+        {
+            if (SceneManager.GetActiveScene().buildIndex != 0 &&
+                SceneManager.GetActiveScene().buildIndex != 3)
+            {
+                PauseScriptSingleton.instance.EnablePauseCanvas();
+                onPause?.Invoke();
             }
         };
 
@@ -182,6 +195,16 @@ public class PlayerController : MonoBehaviour
             else
             {
                 playerAnimations.PunchAnimation();
+            }
+        };
+
+        inputManager.PauseManager.Pause.performed += _ =>
+        {
+            if (SceneManager.GetActiveScene().buildIndex != 0 &&
+                SceneManager.GetActiveScene().buildIndex != 3)
+            {
+                PauseScriptSingleton.instance.EnablePauseCanvas();
+                onPause?.Invoke();
             }
         };
 
@@ -299,5 +322,19 @@ public class PlayerController : MonoBehaviour
     {
         attackType = attackOptions[1];
         hasChangeAttackType.EnablePunchAttackItem();
+    }
+
+    public void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            // Code to handle pause state (e.g., pause game logic, show pause menu)
+            Time.timeScale = 0f; // Pause the game
+        }
+        else
+        {
+            // Code to handle resume state (e.g., resume game logic, hide pause menu)
+            Time.timeScale = 1f; // Resume the game
+        }
     }
 }

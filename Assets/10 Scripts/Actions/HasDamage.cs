@@ -6,6 +6,7 @@ public class HasDamage : MonoBehaviour
 {
     private CharacterAnimations animationsScript;
     private EnemyController enemyController;
+    private DragonController dragonController;
     private PlayerController playerController;
     private SpriteRenderer sp;
     [HideInInspector] public bool isDamage;
@@ -13,6 +14,7 @@ public class HasDamage : MonoBehaviour
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
+        dragonController = GetComponent<DragonController>();
         enemyController = GetComponent<EnemyController>();
         sp = GetComponent<SpriteRenderer>();
         animationsScript = GetComponent<CharacterAnimations>();
@@ -48,6 +50,19 @@ public class HasDamage : MonoBehaviour
                     SoundManager.instance.SoundEnemyDead();
                 }
             }
+            else if (dragonController != null && dragonController.isAlive)
+            {
+                dragonController.SubLives();
+                TurnColorHurt();
+                if (dragonController.lives >= 1)
+                {
+                    SoundManager.instance.DragonHurtSound();
+                }
+                else
+                {
+                    SoundManager.instance.DragonDeadSound();
+                }
+            }
         }    
     }
 
@@ -76,7 +91,11 @@ public class HasDamage : MonoBehaviour
         else if (enemyController != null && enemyController.lives >= 1)
         {
             sp.color = Color.white;
-        }        
+        }
+        else if (dragonController != null && dragonController.lives >= 1)
+        {
+            sp.color = Color.white;
+        }     
     }
 
     public void OnFinishGame()

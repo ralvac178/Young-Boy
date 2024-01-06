@@ -82,7 +82,7 @@ public class CollisionListener : MonoBehaviour
 
                     if (ec != null)
                     {
-                        if (collision.gameObject.GetComponent<EnemyController>().isAlive
+                        if (ec.isAlive
                         && !collision.gameObject.GetComponent<HasDamage>().isDamage)
                         {
                             collision.gameObject.transform.GetComponent<HasDamage>().OnHasDamage();
@@ -90,7 +90,7 @@ public class CollisionListener : MonoBehaviour
                     }
                     else if (dc != null)
                     {
-                        if (true // Repeat the shame thing of enemycontroller
+                        if (dc.isAlive
                         && !collision.gameObject.GetComponent<HasDamage>().isDamage)
                         {
                             collision.gameObject.transform.GetComponent<HasDamage>().OnHasDamage();

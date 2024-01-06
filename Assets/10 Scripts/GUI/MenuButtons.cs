@@ -38,4 +38,18 @@ public class MenuButtons : MonoBehaviour, IPointerEnterHandler
     {       
         SceneManager.LoadScene(0);
     }
+
+    public void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            // Code to handle pause state (e.g., pause game logic, show pause menu)
+            Time.timeScale = 0f; // Pause the game
+        }
+        else
+        {
+            // Code to handle resume state (e.g., resume game logic, hide pause menu)
+            Time.timeScale = 1f; // Resume the game
+        }
+    }
 }

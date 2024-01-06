@@ -15,14 +15,14 @@ public class GameOverCanvasSingleton : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
         gameObject.SetActive(false);
     }
 

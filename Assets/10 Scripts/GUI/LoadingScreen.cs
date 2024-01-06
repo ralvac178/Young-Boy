@@ -24,6 +24,7 @@ public class LoadingScreen : MonoBehaviour
             GameManager.instance.stopPlayer = false;
             GameManager.instance.UpdateLevelText();
             GameManager.instance.RestartCoinsAndAttackOptions();
+            Time.timeScale = 1f;
             if (retry)
             {
                 GameManager.instance.SetLevel();

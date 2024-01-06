@@ -163,6 +163,34 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PauseManager"",
+            ""id"": ""6b78f6b7-a07f-4408-b393-69e19a925dc5"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""e349014a-2e34-4d38-ba78-46271830fd76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6e0ae849-d2a1-4daf-960c-b5c9bc6ee612"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Key"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -186,6 +214,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_ChangeAttack = m_Player.FindAction("ChangeAttack", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
+        // PauseManager
+        m_PauseManager = asset.FindActionMap("PauseManager", throwIfNotFound: true);
+        m_PauseManager_Pause = m_PauseManager.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -321,6 +352,52 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // PauseManager
+    private readonly InputActionMap m_PauseManager;
+    private List<IPauseManagerActions> m_PauseManagerActionsCallbackInterfaces = new List<IPauseManagerActions>();
+    private readonly InputAction m_PauseManager_Pause;
+    public struct PauseManagerActions
+    {
+        private @InputManager m_Wrapper;
+        public PauseManagerActions(@InputManager wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_PauseManager_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_PauseManager; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseManagerActions set) { return set.Get(); }
+        public void AddCallbacks(IPauseManagerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PauseManagerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PauseManagerActionsCallbackInterfaces.Add(instance);
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+        }
+
+        private void UnregisterCallbacks(IPauseManagerActions instance)
+        {
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+        }
+
+        public void RemoveCallbacks(IPauseManagerActions instance)
+        {
+            if (m_Wrapper.m_PauseManagerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPauseManagerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PauseManagerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PauseManagerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PauseManagerActions @PauseManager => new PauseManagerActions(this);
     private int m_KeySchemeIndex = -1;
     public InputControlScheme KeyScheme
     {
@@ -337,5 +414,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnChangeAttack(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+    }
+    public interface IPauseManagerActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

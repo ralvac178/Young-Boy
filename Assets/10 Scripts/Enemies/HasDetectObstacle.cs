@@ -20,8 +20,7 @@ public class HasDetectObstacle : MonoBehaviour
         dragonController = GetComponent<DragonController>();
         enemyController = GetComponent<EnemyController>();
 
-        normalSize = capsuleCollider2D.bounds.size/2.5f;
-        //origin = new Vector2(capsuleCollider2D.bounds.center.x, -capsuleCollider2D.bounds.center.y/2.5f);
+        normalSize = capsuleCollider2D.size;
     }
 
     // Update is called once per frame
@@ -31,7 +30,7 @@ public class HasDetectObstacle : MonoBehaviour
         {
             if (transform.name.Contains("Shaman"))
             {
-                DetectPlayer(enemyController.direction, 0.24f);
+                DetectPlayer(enemyController.direction, 0.22f);
             }
             else if (transform.name.Contains("Barzag"))
             {
@@ -54,8 +53,8 @@ public class HasDetectObstacle : MonoBehaviour
         int layerRight = 0;
 
         //Player && Wall
-        RaycastHit2D hitRight = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, normalSize, CapsuleDirection2D.Horizontal, 0, Vector2.right, distance, layerMask);
-        RaycastHit2D hitLeft = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, normalSize, CapsuleDirection2D.Horizontal, 0, Vector2.left, distance, layerMask);
+        RaycastHit2D hitRight = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, normalSize, CapsuleDirection2D.Horizontal, 0, transform.right, distance, layerMask);
+        RaycastHit2D hitLeft = Physics2D.CapsuleCast(capsuleCollider2D.bounds.center, normalSize, CapsuleDirection2D.Horizontal, 0, -transform.right, distance, layerMask);
 
         if (hitLeft.collider != null)
         {

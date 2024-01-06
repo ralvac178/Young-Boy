@@ -20,14 +20,13 @@ public class SoundManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
-
-        DontDestroyOnLoad(this.gameObject);
     }
 
     // Mute all menu sounds
@@ -118,12 +117,12 @@ public class SoundManager : MonoBehaviour
     // Steps Player
     public void SoundPlayerStep1()
     {
-        audioSourceList[8].Play();
+        if(PlayerController.isOnGround) audioSourceList[8].Play();
     }
 
     public void SoundPlayerStep2()
     {
-        audioSourceList[9].Play();
+        if (PlayerController.isOnGround) audioSourceList[9].Play();
     }
 
     // Get Gem
@@ -175,5 +174,15 @@ public class SoundManager : MonoBehaviour
     public void FireworksSound()
     {
         audioSourceList[18].Play();
+    }
+
+    public void DragonHurtSound()
+    {
+        audioSourceList[19].Play();
+    }
+
+    public void DragonDeadSound()
+    {
+        audioSourceList[20].Play();
     }
 }

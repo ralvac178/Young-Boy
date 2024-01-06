@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,32 +21,33 @@ public class GameManager : MonoBehaviour
     private PlayerController playerController;
     public bool stopPlayer = false;
 
+    // Game GUI
     [SerializeField] private TextMeshProUGUI levelTextGUI, coinsTextGUI, arrowsTextGUI;
     [SerializeField] private Image livesImage, redKey, yellowKey, blueKey;
     [SerializeField] private Image dJGem, punchMode, arrowMode;
 
+
     // Start is called before the first frame update
     void Awake()
     {
-        // Asegura que solo exista una instancia
-        if (instance == null)
+        // Ensure only one instance exists
+        if (instance != null && instance != this)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // Para que el objeto no se destruya al cargar nuevas escenas
+            Destroy(this.gameObject);
         }
         else
         {
-            Destroy(gameObject); // Destruye el objeto duplicado
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
     }
 
     private void Start()
-    {
+    {      
         UpdateLevelText();
         UpdateLives(lives);
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
-
 
     public void AddArrows()
     {
@@ -68,7 +73,17 @@ public class GameManager : MonoBehaviour
 
     public void AddPoints(int points)
     {
-        coins += points;
+        if (coins <= 99)
+        {
+            coins += points;
+        }
+        else
+        {
+            AddLives(1);
+            SoundManager.instance.SoundPlayerGotArrowsNLives();
+            coins = 0;
+        }
+        
         UpdateCoins(coins);
     }
 
@@ -84,8 +99,15 @@ public class GameManager : MonoBehaviour
 
     public void AddLives(int livesToAdd)
     {
-        lives += livesToAdd;
-        UpdateLives(lives);
+        if (lives < 8)
+        {
+            lives += livesToAdd;
+            if (lives >= 8)
+            {
+                lives = 8;
+            }
+            UpdateLives(lives);
+        }   
     }
 
     public void SubLives(int livesToSub)
