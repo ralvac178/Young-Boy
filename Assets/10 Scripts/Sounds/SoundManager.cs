@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class SoundManager : MonoBehaviour
 {
     private AudioSource[] audioSourceList;
-    [SerializeField] private Slider volumeSlider;
     public static SoundManager instance;
+    public static float volume;
+    public static bool SFXMute = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        audioSourceList = GetComponents<AudioSource>();
-
-    }
 
     private void Awake()
     {
@@ -25,45 +21,43 @@ public class SoundManager : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
+
+        audioSourceList = GetComponents<AudioSource>();
     }
 
-    // Mute all menu sounds
-    public void MuteMenuSounds()
+    public void SetBGMVolume(Slider volumeSlider)
     {
-        foreach (var item in audioSourceList)
+        if (volumeSlider != null)
         {
-            item.mute = true;
-        }
-    }
-
-    // UnMute all menu sounds
-    public void UnMuteMenuSounds()
-    {
-        foreach (var item in audioSourceList)
-        {
-            item.mute = false;
-        }
+            volume = volumeSlider.value;
+            PlayerPrefs.SetFloat("BGMusic", volume);
+        }    
     }
 
     //Set SFX Volume
     public void SetVolumeSFX()
     {
-        if (volumeSlider != null)
+        if (audioSourceList != null)
         {
-            foreach (var item in audioSourceList)
+            if (SFXMute)
             {
-                if (volumeSlider.value <= 0f)
+                PlayerPrefs.SetInt("SFX", 1);
+                foreach (var audiosource in audioSourceList)
                 {
-                    item.volume = 0;
+                    audiosource.mute = true;
                 }
-                else
-                {
-                    item.volume = volumeSlider.value + 0.4f;
-                }             
             }
-        }       
+            else
+            {
+                PlayerPrefs.SetInt("SFX", 0);
+                foreach (var audiosource in audioSourceList)
+                {
+                    audiosource.mute = false;
+                }
+            }
+        }
     }
 
     //Sounds of Menu
@@ -184,5 +178,13 @@ public class SoundManager : MonoBehaviour
     public void DragonDeadSound()
     {
         audioSourceList[20].Play();
+    }
+
+    public void SFXSwitch()
+    {
+        if (SFXMute == true) SFXMute = false;
+        else SFXMute = true;
+
+        SetVolumeSFX();
     }
 }

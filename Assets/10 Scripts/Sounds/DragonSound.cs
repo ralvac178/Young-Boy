@@ -4,10 +4,28 @@ using UnityEngine;
 
 public class DragonSound : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource;
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        SetVolume();
+    }
 
     public void StepSound()
     {
-        audioSource.Play();
+        if (audioSource != null) audioSource.Play();
+    }
+
+    public void SetVolume()
+    {
+        if (audioSource != null)
+        {
+            if (SoundManager.SFXMute) audioSource.mute = true;
+            else
+            {
+                audioSource.mute = false;
+            }
+        }
     }
 }

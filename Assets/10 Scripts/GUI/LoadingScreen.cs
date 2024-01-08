@@ -78,12 +78,11 @@ public class LoadingScreen : MonoBehaviour
             {
                 // Permitir que la escena se active
                 yield return new WaitForSecondsRealtime(3);
-                if (retry)
+                if (retry || levelToGo == 1)
                 {
                     if (GameManager.instance != null) GameManager.instance.ResetAllGame();
                     retry = false;
                 }
-                //
                 asyncLoad.allowSceneActivation = true;              
             }
 

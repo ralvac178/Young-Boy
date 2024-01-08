@@ -5,11 +5,89 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
+using System;
 
 public class MenuButtons : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private UnityEvent onHighlighedEvent;
-    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI textButton;
+    [SerializeField] private GameObject uncheckSFXVolume, checkSFXVolume;
+    [SerializeField] private AudioSource audioSource;
+
+    private Slider volumeSlider;
+
+    private void Start()
+    {
+        volumeSlider = GetComponent<Slider>();
+
+        if (PlayerPrefs.HasKey("SFX"))
+        {
+            if (uncheckSFXVolume != null && checkSFXVolume != null)
+            {
+                if (PlayerPrefs.GetInt("SFX") == 0)
+                {
+                    uncheckSFXVolume.SetActive(false);
+                    checkSFXVolume.SetActive(true);
+                }
+                else
+                {
+                    uncheckSFXVolume.SetActive(true);
+                    checkSFXVolume.SetActive(false);
+                }
+            }
+                     
+        }
+        else
+        {
+            SoundManager.SFXMute = false;
+            PlayerPrefs.SetInt("SFX", 0);
+            SoundManager.instance.SetVolumeSFX();
+        }
+
+        if (volumeSlider != null)
+        {
+            if (PlayerPrefs.HasKey("BGMusic"))
+            {
+                volumeSlider.value = PlayerPrefs.GetFloat("BGMusic", 0.1f);
+            }
+            else
+            {
+                volumeSlider.value = 0.1f;
+                PlayerPrefs.SetFloat("BGMusic", 0.1f);
+            }
+        }
+        else
+        {
+            if (audioSource!= null)
+            {
+                audioSource.volume = PlayerPrefs.GetFloat("BGMusic", 0.1f);
+            }           
+        }
+
+        // Set sfx sounds at begin using play button
+        if (gameObject.name.Equals("StartButton"))
+        {
+            if (PlayerPrefs.HasKey("SFX"))
+            {
+                if (PlayerPrefs.GetInt("SFX") == 0)
+                {
+                    SoundManager.SFXMute = false;
+                }
+                else
+                {
+                    Debug.Log("in");
+                    SoundManager.SFXMute = true;
+                }
+            }
+            else
+            {
+                SoundManager.SFXMute = false;
+            }
+
+            SoundManager.instance.SetVolumeSFX();
+        }
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -20,11 +98,14 @@ public class MenuButtons : MonoBehaviour, IPointerEnterHandler
     {
         if (gameObject.name.Equals("RetryButton"))
         {
-            if (text.text.Equals("RETRY"))
+            if (textButton != null)
             {
-                LoadingScreen.retry = true;
-            }
-            GameOverCanvasSingleton.instance.GameOverCanvasDeactive();
+                if (textButton.text.Equals("RETRY"))
+                {
+                    LoadingScreen.retry = true;
+                }
+                GameOverCanvasSingleton.instance.GameOverCanvasDeactive();
+            }           
         }
         SceneManager.LoadScene("Loading");
     }
@@ -51,5 +132,27 @@ public class MenuButtons : MonoBehaviour, IPointerEnterHandler
             // Code to handle resume state (e.g., resume game logic, hide pause menu)
             Time.timeScale = 1f; // Resume the game
         }
+    }
+
+    public void SetBGMVolume()
+    {
+        SoundManager.instance.SetBGMVolume(volumeSlider);
+    }
+
+    public void SetSFXVolume()
+    {
+        SoundManager.instance.SFXSwitch();
+    }
+
+    // Sounds
+    //Sounds of Menu
+    public void SoundMenuButton()
+    {
+        SoundManager.instance.SoundMenuButton();
+    }
+
+    public void SoundClickButton()
+    {
+        SoundManager.instance.SoundClickButton();
     }
 }

@@ -32,6 +32,7 @@ public class HasDamage : MonoBehaviour
             if (GameManager.instance.GetLives() <= 0)
             {
                 GameManager.instance.gameOver = true;
+                LoadingScreen.retry = true;
                 GameOverCanvasSingleton.instance.RestoreToGameOver();
             }
         }

@@ -8,21 +8,16 @@ public class CamaraMain : MonoBehaviour
     [SerializeField] private AudioClip clip;
     [SerializeField] private AudioSource audioSource;
 
-    private GameObject vcam;
     //Start is called before the first frame update
     void Start()
     {
         parallax = GetComponentsInChildren<Parallax>();
-
-        vcam = GameObject.FindGameObjectWithTag("cam");
-
-        //if (vcam != null) vcam.GetComponent<CameraGetPlayer>().GetBorder();
     }
 
 
     public void ChangeToWinnerTheme()
     {
-        if (clip != null)
+        if (clip != null && audioSource != null)
         {
             audioSource.clip = clip;
             audioSource.Play();

@@ -5,14 +5,31 @@ using UnityEngine;
 public class ElectricSound : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
-    
+
+    private void Start()
+    {
+        SetVolume();
+    }
+
     public void PlaySound()
     {
-        audioSource.Play();
+        if (audioSource != null) audioSource.Play();
     }
 
     public void StopSound()
     {
-        audioSource.Stop();
+        if (audioSource != null) audioSource.Stop();
+    }
+
+    public void SetVolume()
+    {
+        if (audioSource != null)
+        {
+            if (SoundManager.SFXMute) audioSource.mute = true;
+            else
+            {
+                audioSource.mute = false;
+            }
+        }
     }
 }

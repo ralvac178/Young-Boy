@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class EnemySounds : MonoBehaviour
 {
-    private AudioSource[] audioSources;
+    private AudioSource audioSource;
 
     private void Start()
     {
-        audioSources = GetComponents<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
+        SetVolume();
     }
     public void PlayEnemyStep()
     {
-        audioSources[0].Play();
+        if (audioSource != null)  audioSource.Play();
     }
 
+    public void SetVolume()
+    {
+        if (audioSource != null)
+        {
+            if (SoundManager.SFXMute) audioSource.mute = true;
+            else
+            {
+                audioSource.mute = false;
+            }
+        }
+    }
 }

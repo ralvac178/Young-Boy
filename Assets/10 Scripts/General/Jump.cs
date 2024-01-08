@@ -22,7 +22,7 @@ public class Jump : MonoBehaviour
                 rb2D.AddForce(Vector2.up * forceJump * 0.75f, ForceMode2D.Impulse);
                 SoundManager.instance.SoundPlayerDoubleJump();
                 PlayerController.canDoubleJump = false;
-                GameManager.instance.DisableDoubleJumpIem();
+                GameManager.instance.DisableDoubleJumpGem();
             }
         }        
     }

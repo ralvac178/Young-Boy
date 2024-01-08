@@ -13,4 +13,5 @@ public class PlayerSounds : MonoBehaviour
     {
         SoundManager.instance.SoundPlayerStep2();
     }
+
 }

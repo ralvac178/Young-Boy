@@ -981,8 +981,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 175328886}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -1070,8 +1070,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 175328886}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -1082,7 +1082,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &180067246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,8 +1708,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 288315421}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -1794,8 +1797,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 288315421}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -1806,7 +1809,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &332986317
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,8 +2003,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 357174129}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -2009,7 +2015,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &357174130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2054,8 +2063,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 357174129}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -2355,8 +2364,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 400774695}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -2367,7 +2376,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 1874495125}
+  textButton: {fileID: 1874495125}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &400774696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2412,8 +2424,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 400774695}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -3857,8 +3869,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 606382549}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -3934,8 +3946,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 606382549}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -3946,7 +3958,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &653911665
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,8 +4368,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 679664181}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -4365,7 +4380,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &679664182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5019,8 +5037,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 753018640}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -5031,7 +5049,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &753018641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5076,8 +5097,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 753018640}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -5205,8 +5226,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 755723363}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -5217,7 +5238,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &755723364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5262,8 +5286,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 755723363}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -5622,8 +5646,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 826289864}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -5634,7 +5658,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &826289865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5679,8 +5706,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 826289864}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -6312,8 +6339,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 981983833}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -6401,8 +6428,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 981983833}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -6413,7 +6440,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &995549826
 GameObject:
   m_ObjectHideFlags: 0
@@ -6470,8 +6500,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 995549828}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -6482,7 +6512,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &995549829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7578,8 +7611,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1160978772}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -7655,8 +7688,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1160978772}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -7667,7 +7700,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 1396433768}
 --- !u!1 &1166820859
 GameObject:
   m_ObjectHideFlags: 0
@@ -7802,8 +7838,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1182699073}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -7814,7 +7850,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1182699074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8568,8 +8607,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1313164129}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -8580,7 +8619,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1313164130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8625,8 +8667,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1313164129}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -8745,9 +8787,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1346465871}
+  - component: {fileID: 1346465869}
   - component: {fileID: 1346465870}
   - component: {fileID: 1346465872}
-  - component: {fileID: 1346465869}
   - component: {fileID: 1346465874}
   - component: {fileID: 1346465873}
   - component: {fileID: 1346465875}
@@ -8786,7 +8828,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0dfaf1b8e97cf94a9077d6a5a9d37b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeSlider: {fileID: 2018416169}
 --- !u!82 &1346465870
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11840,8 +11881,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1438211243}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -11852,7 +11893,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1438211244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11983,7 +12027,7 @@ GameObject:
   - component: {fileID: 1441282813}
   - component: {fileID: 1441282812}
   m_Layer: 5
-  m_Name: Sound
+  m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12029,7 +12073,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SOUND
+  m_text: SFX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be8ee65219f22024aa51bc889b47b446, type: 2}
   m_sharedMaterial: {fileID: -5730162469948018908, guid: be8ee65219f22024aa51bc889b47b446, type: 2}
@@ -12526,8 +12570,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1476157870}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -12538,7 +12582,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1476157871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12583,8 +12630,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1476157870}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -12983,8 +13030,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1500735275}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -12995,7 +13042,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 1362265159}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1500735276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13040,8 +13090,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1500735275}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -13295,7 +13345,7 @@ GameObject:
   - component: {fileID: 1503354947}
   - component: {fileID: 1503354946}
   m_Layer: 5
-  m_Name: Volume
+  m_Name: BGM
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13341,7 +13391,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VOLUME
+  m_text: BGM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: be8ee65219f22024aa51bc889b47b446, type: 2}
   m_sharedMaterial: {fileID: -5730162469948018908, guid: be8ee65219f22024aa51bc889b47b446, type: 2}
@@ -14982,8 +15032,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1658860861}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -15071,8 +15121,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1658860861}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -15083,7 +15133,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &1669933619
 GameObject:
   m_ObjectHideFlags: 0
@@ -15096,6 +15149,7 @@ GameObject:
   - component: {fileID: 1669933623}
   - component: {fileID: 1669933622}
   - component: {fileID: 1669933621}
+  - component: {fileID: 1669933624}
   m_Layer: 5
   m_Name: SoundCheck
   m_TagString: Untagged
@@ -15167,6 +15221,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1669933624}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: SetSFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1669933619}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -15183,30 +15249,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1396433768}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Pause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: MuteMenuSounds
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15253,6 +15295,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669933619}
   m_CullTransparentMesh: 1
+--- !u!114 &1669933624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669933619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7cca218587bd342a3d0dc71c3d5441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHighlighedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 2145600180}
+  checkSFXVolume: {fileID: 1669933619}
+  audioSource: {fileID: 0}
 --- !u!1 &1686518900
 GameObject:
   m_ObjectHideFlags: 0
@@ -15892,8 +15953,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1787131382}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -15904,7 +15965,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1787131383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15949,8 +16013,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1787131382}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -16214,8 +16278,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1845774104}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -16226,7 +16290,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1845774105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16271,8 +16338,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1845774104}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -16378,8 +16445,8 @@ RectTransform:
   m_Father: {fileID: 199224841}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 40.57391, y: 147.6249}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -17010,8 +17077,8 @@ MonoBehaviour:
   onHighlighedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1982432582}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundMenuButton
         m_Mode: 1
         m_Arguments:
@@ -17022,7 +17089,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  text: {fileID: 0}
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &1982432583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17067,8 +17137,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+      - m_Target: {fileID: 1982432582}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SoundClickButton
         m_Mode: 1
         m_Arguments:
@@ -17391,6 +17461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2018416168}
   - component: {fileID: 2018416169}
+  - component: {fileID: 2018416170}
   m_Layer: 5
   m_Name: VolumeSlider
   m_TagString: Untagged
@@ -17472,6 +17543,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2018416170}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: SetBGMVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1396433768}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: set_volume
@@ -17484,18 +17567,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: SetVolumeSFX
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+--- !u!114 &2018416170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018416167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7cca218587bd342a3d0dc71c3d5441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHighlighedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 0}
+  checkSFXVolume: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &2021655597
 GameObject:
   m_ObjectHideFlags: 0
@@ -18242,6 +18332,7 @@ GameObject:
   - component: {fileID: 2145600183}
   - component: {fileID: 2145600182}
   - component: {fileID: 2145600181}
+  - component: {fileID: 2145600185}
   m_Layer: 5
   m_Name: SoundUnCheck
   m_TagString: Untagged
@@ -18293,6 +18384,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2145600185}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: SetSFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 2145600180}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -18309,30 +18412,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1396433768}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1346465869}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: UnMuteMenuSounds
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18399,3 +18478,22 @@ RectTransform:
   m_AnchoredPosition: {x: 71, y: 67}
   m_SizeDelta: {x: 142, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2145600185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145600180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7cca218587bd342a3d0dc71c3d5441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHighlighedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  textButton: {fileID: 0}
+  uncheckSFXVolume: {fileID: 2145600180}
+  checkSFXVolume: {fileID: 1669933619}
+  audioSource: {fileID: 0}

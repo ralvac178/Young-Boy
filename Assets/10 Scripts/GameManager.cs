@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     // Game GUI
     [SerializeField] private TextMeshProUGUI levelTextGUI, coinsTextGUI, arrowsTextGUI;
-    [SerializeField] private Image livesImage, redKey, yellowKey, blueKey;
+    [SerializeField] private Image livesImage, redKey, yellowKey, blueKey, gem;
     [SerializeField] private Image dJGem, punchMode, arrowMode;
 
 
@@ -143,6 +143,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UnSetKey()
+    {
+        DisableGotItem(blueKey);
+        DisableGotItem(yellowKey);
+        DisableGotItem(redKey);
+    }
+
     public void EnableGotItem(Image itemImage)
     {
         itemImage.color = new Color(1, 1, 1, 1);
@@ -173,10 +180,23 @@ public class GameManager : MonoBehaviour
         EnableGotItem(dJGem);
     }
 
-    public void DisableDoubleJumpIem()
+    public void DisableDoubleJumpGem()
     {
         DisableGotItem(dJGem);
     }
+
+    //Gems
+    public void SetGem()
+    {
+        EnableGotItem(gem);
+    }
+
+    public void DisableGem()
+    {
+        DisableGotItem(gem);
+    }
+
+    //End Gems settable
 
     public void EnablePunchAttackItem()
     {
@@ -201,6 +221,8 @@ public class GameManager : MonoBehaviour
         arrows = 0;
         UpdateCoins(coins);
         UpdateArrows();
+        UnSetKey();
+        DisableGem();
         playerController.RestartAttackOptions();
     }
 
@@ -212,11 +234,13 @@ public class GameManager : MonoBehaviour
         UpdateLives(lives);
         UpdateCoins(coins);
         UpdateArrows();
+        DisableGem();
         UpdateLevelText();
         gameOver = false;
         HasTouchGround.enableReturn = false;
         PlayerController.canDoubleJump = false;
         playerController.RestartAttackOptions();
+        UnSetKey();
         playerController.ResetLayer();
         playerController.ResetAnimator();
     }
