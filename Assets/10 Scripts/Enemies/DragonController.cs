@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragonController : MonoBehaviour
+public class DragonController : MonoBehaviour, IEnemyController
 {
     [SerializeField] private EnemyConfig enemyConfig;
     [SerializeField] private Rigidbody2D rb;
@@ -196,14 +196,14 @@ public class DragonController : MonoBehaviour
             if (lives <= 0)
             {
                 isAlive = false;
-                Invoke(nameof(DeleteEnemy), 5f);
+                Invoke(nameof(DeleteCharacter), 5f);
                 characterAnimations.WalkAnimation(false);
                 characterAnimations.DeadAnimation();
             }
         }
     }
 
-    public void DeleteEnemy()
+    public void DeleteCharacter()
     {
         launcher.Launch(explosion, transform.position);
         launcher.Launch(powerUp, transform.position);
@@ -218,7 +218,7 @@ public class DragonController : MonoBehaviour
         sr.color = new Color(0.8f, 0.8f, 0.14f, 0.36f);
     }
 
-    private void AttackAnimation()
+    public void AttackAnimation()
     {
         int random = Random.Range(0, 2);
         if (random == 1) characterAnimations.PunchAnimation();
@@ -255,5 +255,15 @@ public class DragonController : MonoBehaviour
     public void DamageTimered()
     {
         playerHasDamage.OnHasDamage();
+    }
+
+    public void PlayDust()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void AddForcekWithContact()
+    {
+        throw new System.NotImplementedException();
     }
 }

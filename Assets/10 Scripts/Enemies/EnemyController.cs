@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IEnemyController
 {
     [SerializeField] private EnemyConfig enemyConfig;
     [SerializeField] private HasMove hasMoveScript;
@@ -161,7 +161,7 @@ public class EnemyController : MonoBehaviour
         AddForcekWithContact();
     }
 
-    private void AttackAnimation()
+    public void AttackAnimation()
     {
         int random = Random.Range(0, 2);
         if (random == 1) characterAnimations.PunchAnimation();
@@ -176,14 +176,14 @@ public class EnemyController : MonoBehaviour
             if (lives <= 0)
             {
                 isAlive = false;
-                Invoke(nameof(DeleteEnemy), 5);
+                Invoke(nameof(DeleteCharacter), 5);
                 characterAnimations.WalkAnimation(false);
                 characterAnimations.DeadAnimation();
             }
         }
     }
 
-    public void DeleteEnemy()
+    public void DeleteCharacter()
     {
         launcher.Launch(explosion, transform.position);
         launcher.Launch(powerUp, transform.position);
@@ -219,4 +219,5 @@ public class EnemyController : MonoBehaviour
         }
 
     }
+
 }

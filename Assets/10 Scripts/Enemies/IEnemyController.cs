@@ -4,15 +4,11 @@ using UnityEngine;
 
 public interface IEnemyController
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    void AttackAnimation();
+    void SubLives();
+    void DeleteCharacter();
+    void MakeTransparent();
+    void PlayDust();
+    void AddForcekWithContact();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
