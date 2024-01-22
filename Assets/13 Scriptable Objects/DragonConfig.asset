@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40e04638c36d8df428a41170f90fa468, type: 3}
+  m_Name: DragonConfig
+  m_EditorClassIdentifier: 
+  type: Barzag
+  hasAllPowerUps: 1
+  fullPowerUps:
+  - {fileID: 4478453252376891382, guid: 423c4bb9a9d7b3b4fa6ab0920b28197f, type: 3}
+  - {fileID: 4478453252376891382, guid: 423c4bb9a9d7b3b4fa6ab0920b28197f, type: 3}
+  - {fileID: 5472792269011632892, guid: 6d0aefca6d916364993d518745a37a77, type: 3}
+  dectivateTrapPowerUp: {fileID: 0}
+  explosion: {fileID: 2075445603239615268, guid: 83496d678b5d09a4f8d69028d2e096e9, type: 3}
+  lives: 5
+  speed: 10640
